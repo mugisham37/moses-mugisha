@@ -136,6 +136,47 @@ const createSecondaryImage = (src: string, alt: string): WorkImage =>
 // Use helper functions above to eliminate repetitive image configuration.
 
 export const workDetailsData: Record<string, WorkDetail> = {
+  'corevia-financial-platform': {
+    id: 'corevia-financial-platform',
+    title: 'Corevia Financial Management Platform',
+    description: 'Modern financial consulting website with comprehensive service pages and responsive design.',
+    category: 'products',
+    thumbnailImage: '/Corevia/Corevia-logo.svg',
+    heroImage: createHeroImage(
+      '/Corevia/work/Heroimage.png',
+      'Corevia Financial Platform Hero'
+    ),
+    secondaryImage: createSecondaryImage(
+      '/Corevia/work/secondaryImage.png',
+      'Corevia Multi-Page Interface'
+    ),
+    about: {
+      client: 'Corevia Consulting',
+      contribution: 'Frontend Development, UI Implementation, Responsive Design',
+      year: '2024'
+    },
+    fullDescription: 'A comprehensive financial management platform built for Corevia Consulting, featuring multiple service pages including Home, About, Features, Pricing, Blog, and Contact. The platform showcases financial analytics tools, investment management services, and digital transformation solutions. Built with modern web technologies to deliver a seamless user experience across all devices with intuitive navigation and engaging visual design.',
+    processImage: createSecondaryImage(
+      '/Corevia/work/processimage.png',
+      'Corevia Development Process'
+    ),
+    problemTitle: 'The Challenge',
+    problemDescription: [
+      'Corevia Consulting needed a professional digital presence to showcase their financial management and consulting services to potential clients. The challenge was to create a scalable, multi-page website that could effectively communicate complex financial concepts while maintaining an approachable and modern aesthetic. The platform needed to serve diverse audiences including small businesses, growing teams, and enterprise clients.',
+      'The website required clear presentation of service offerings across budgeting tools, investment management, digital transformation consulting, and market expansion strategies. Additionally, the platform needed to include comprehensive pricing tiers, client testimonials, blog functionality for thought leadership content, and contact forms for lead generation—all while maintaining consistent branding and optimal performance across desktop, tablet, and mobile devices.'
+    ],
+    solutionTitle: 'The Solution',
+    solutionDescription: [
+      'Built with Next.js 16 and TypeScript, leveraging the App Router architecture for optimal performance and SEO capabilities. Implemented a component-based architecture with dedicated page sections for hero, about, benefits, features, core capabilities, pricing, testimonials, blog preview, and call-to-action modules. Created seven distinct pages (Home, About, Features, Pricing, Blog, Blog Detail, Contact) with consistent navigation and footer components.',
+      'Designed a modular component system with reusable elements across landing, feature, pricing, blog, and contact sections. Implemented responsive layouts using Tailwind CSS for consistent styling and mobile-first design principles. Created three-tier pricing structure (Starter, Growth, Scale plans) with detailed feature comparisons, animated scroll effects for enhanced user engagement, and optimized image carousels showcasing platform capabilities. Deployed on Netlify for reliable hosting with continuous deployment integration.'
+    ],
+    closingImage: createHeroImage(
+      '/Corevia/work/ClosingImage.png',
+      'Corevia Platform Final Product'
+    ),
+    externalLink: 'https://corevias.netlify.app/'
+  },
+
   'elev8-rwanda-website': {
     id: 'elev8-rwanda-website',
     title: 'Elev8 Rwanda Corporate Website',
