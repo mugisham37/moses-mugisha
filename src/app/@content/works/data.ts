@@ -177,6 +177,47 @@ export const workDetailsData: Record<string, WorkDetail> = {
     externalLink: 'https://corevias.netlify.app/'
   },
 
+  'landscapo-architecture-platform': {
+    id: 'landscapo-architecture-platform',
+    title: 'Landscapo Architecture & Design Platform',
+    description: 'Professional architecture portfolio website showcasing innovative design solutions with comprehensive project galleries and service offerings.',
+    category: 'products',
+    thumbnailImage: '/Landscape/landscapo-logo.svg',
+    heroImage: createHeroImage(
+      '/Landscape/work/Hero.png',
+      'Landscapo Architecture Platform Hero'
+    ),
+    secondaryImage: createSecondaryImage(
+      '/Landscape/work/Secondary.png',
+      'Landscapo Project Showcase Interface'
+    ),
+    about: {
+      client: 'Landscapo Architecture Studio',
+      contribution: 'Full-Stack Development, UI/UX Implementation, Animation Integration',
+      year: '2024'
+    },
+    fullDescription: 'A comprehensive architecture and design portfolio platform built for Landscapo Studio, featuring dynamic project galleries across multiple categories including Urban, Interior, Corporate, and Residential designs. The platform showcases over 50 completed projects with detailed case studies, expert team profiles, and service offerings. Built with modern web technologies including Next.js and Framer Motion to deliver smooth animations and seamless user experience across all devices, highlighting the studio\'s expertise in innovative architectural solutions and sustainable design practices.',
+    processImage: createSecondaryImage(
+      '/Landscape/work/Processing.png',
+      'Landscapo Development Process'
+    ),
+    problemTitle: 'The Challenge',
+    problemDescription: [
+      'Landscapo Architecture Studio needed a sophisticated digital platform to showcase their extensive portfolio of architectural projects and establish their brand presence in the competitive architecture and design market. The challenge was to create a visually stunning, multi-page website that could effectively present complex architectural concepts, project galleries, and design philosophies while maintaining fast load times and smooth interactions. The platform needed to serve diverse audiences including potential clients, industry partners, and design enthusiasts.',
+      'The website required seamless presentation of project portfolios across multiple categories (Urban, Interior, Corporate, Residential) with high-quality imagery, detailed project specifications, and interactive galleries. Additionally, the platform needed to communicate the studio\'s impressive metrics—50+ completed projects, 100+ expert team members, and $3.5M in project value—while incorporating engaging animations, FAQ sections for client inquiries, and clear service descriptions. All of this needed to work flawlessly across desktop, tablet, and mobile devices with intuitive navigation and fast performance.'
+    ],
+    solutionTitle: 'The Solution',
+    solutionDescription: [
+      'Built with Next.js 14 and TypeScript, leveraging the App Router architecture for optimal performance and SEO capabilities. Implemented Framer Motion for sophisticated scroll-triggered animations and smooth page transitions that enhance the visual storytelling of architectural projects. Created a component-based architecture with dedicated sections for hero presentations, metrics showcase, project galleries, experience highlights, FAQ modules, and call-to-action components. Developed dynamic routing for individual project pages with detailed property information, overview sections, and image galleries.',
+      'Designed a modular component system with reusable elements across landing, project, service, about, and contact sections. Implemented responsive layouts using Tailwind CSS for consistent styling and mobile-first design principles. Created an intuitive project categorization system (Urbano, Interior, Corporate) with filtering capabilities and smooth transitions between views. Integrated interactive FAQ accordion components, animated metric counters, and optimized image carousels showcasing architectural designs. Deployed on Netlify for reliable hosting with continuous deployment integration and optimal asset delivery.'
+    ],
+    closingImage: createHeroImage(
+      '/Landscape/work/Footer.png',
+      'Landscapo Platform Final Product'
+    ),
+    externalLink: 'https://landscapo.netlify.app/'
+  },
+
   'elev8-rwanda-website': {
     id: 'elev8-rwanda-website',
     title: 'Elev8 Rwanda Corporate Website',
@@ -257,7 +298,9 @@ export const workDetailsData: Record<string, WorkDetail> = {
       'Final Platform Experience'
     ),
     externalLink: 'https://moments.elev8rwanda.com/'
-  }
+  },
+
+  
 }
 
 // ============================================================================
