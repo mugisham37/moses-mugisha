@@ -141,13 +141,13 @@ export const workDetailsData: Record<string, WorkDetail> = {
     title: 'Corevia Financial Management Platform',
     description: 'Modern financial consulting website with comprehensive service pages and responsive design.',
     category: 'products',
-    thumbnailImage: '/Corevia/Corevia-logo.svg',
+    thumbnailImage: 'https://cdn.prod.website-files.com/687a676ef5e70f7d641d3080/687ff334971f215c6e7c3f51_LogoCorevia.svg',
     heroImage: createHeroImage(
-      '/Corevia/work/Heroimage.png',
+      '/Coreva/work/Hero_image.png',
       'Corevia Financial Platform Hero'
     ),
     secondaryImage: createSecondaryImage(
-      '/Corevia/work/secondaryImage.png',
+      '/Coreva/work/Secondary.png',
       'Corevia Multi-Page Interface'
     ),
     about: {
@@ -157,7 +157,7 @@ export const workDetailsData: Record<string, WorkDetail> = {
     },
     fullDescription: 'A comprehensive financial management platform built for Corevia Consulting, featuring multiple service pages including Home, About, Features, Pricing, Blog, and Contact. The platform showcases financial analytics tools, investment management services, and digital transformation solutions. Built with modern web technologies to deliver a seamless user experience across all devices with intuitive navigation and engaging visual design.',
     processImage: createSecondaryImage(
-      '/Corevia/work/processimage.png',
+      '/Coreva/work/processing.png',
       'Corevia Development Process'
     ),
     problemTitle: 'The Challenge',
@@ -171,7 +171,7 @@ export const workDetailsData: Record<string, WorkDetail> = {
       'Designed a modular component system with reusable elements across landing, feature, pricing, blog, and contact sections. Implemented responsive layouts using Tailwind CSS for consistent styling and mobile-first design principles. Created three-tier pricing structure (Starter, Growth, Scale plans) with detailed feature comparisons, animated scroll effects for enhanced user engagement, and optimized image carousels showcasing platform capabilities. Deployed on Netlify for reliable hosting with continuous deployment integration.'
     ],
     closingImage: createHeroImage(
-      '/Corevia/work/ClosingImage.png',
+      '/Coreva/work/footerimage.png',
       'Corevia Platform Final Product'
     ),
     externalLink: 'https://corevias.netlify.app/'
