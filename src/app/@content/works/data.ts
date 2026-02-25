@@ -218,6 +218,47 @@ export const workDetailsData: Record<string, WorkDetail> = {
     externalLink: 'https://landscapo.netlify.app/'
   },
 
+  'stayli-vacation-rental-platform': {
+    id: 'stayli-vacation-rental-platform',
+    title: 'Stayli Vacation Rental Platform',
+    description: 'Modern vacation rental marketplace connecting travelers with extraordinary stays worldwide, featuring property listings and seamless booking experience.',
+    category: 'products',
+    thumbnailImage: 'https://cdn.prod.website-files.com/6811ad3e11282304843a1ca2/6811ad3e11282304843a1e18_stayli-black-logo.svg',
+    heroImage: createHeroImage(
+      '/Realestate/work/Hero.png',
+      'Stayli Platform Hero'
+    ),
+    secondaryImage: createSecondaryImage(
+      '/Realestate/work/secondary.png',
+      'Stayli Property Listings Interface'
+    ),
+    about: {
+      client: 'Stayli',
+      contribution: 'Full-Stack Development, UI/UX Implementation, Dynamic Routing',
+      year: '2024'
+    },
+    fullDescription: 'A comprehensive vacation rental platform built for Stayli, featuring multiple pages including Home, About, Listings, Property Details, and Contact. The platform showcases curated vacation rentals ranging from urban lofts to beachfront villas, mountain cabins, and luxury suites. Built with Next.js App Router architecture to deliver dynamic property browsing, detailed listing pages with image galleries, amenity showcases, and integrated booking forms. The platform serves diverse travelers seeking budget-friendly options to high-end luxury retreats with intuitive search and filtering capabilities.',
+    processImage: createSecondaryImage(
+      '/Realestate/work/Processing.png',
+      'Stayli Development Process'
+    ),
+    problemTitle: 'The Challenge',
+    problemDescription: [
+      'Stayli needed a digital marketplace to bridge the gap between travelers seeking unique accommodations and property owners offering exceptional stays. The challenge was to create a scalable platform that could effectively showcase diverse property types—from $95 mountain cabins to $210 beachfront suites—while maintaining consistent user experience across property categories. The platform needed to handle dynamic routing for individual property pages, support multiple property attributes (bedrooms, guests, pricing, ratings), and present complex information in an accessible format.',
+      'The website required clear presentation of property features including high-quality image galleries, detailed amenities lists, room type variations, location information, and guest reviews. Additionally, the platform needed FAQ sections for customer support, testimonial displays for social proof, destination exploration features, and contact forms for inquiries—all while maintaining optimal performance with image optimization, responsive design across all devices, and SEO-friendly architecture for property discoverability.'
+    ],
+    solutionTitle: 'The Solution',
+    solutionDescription: [
+      'Built with Next.js 14 and TypeScript, leveraging the App Router with dynamic routing patterns ([slug]) for scalable property detail pages. Implemented a robust data architecture using TypeScript interfaces for type-safe property management, including PropertyImage, PropertyAmenity, and Property models with comprehensive attributes (pricing, ratings, reviews, features, amenities). Created five core pages (Home, About, Listings, Property Detail, Contact) with dedicated component architecture for landing sections, listing displays, and property showcases.',
+      'Designed a modular component system with reusable elements across hero sections, destination cards, testimonial displays, FAQ accordions, and call-to-action modules. Implemented responsive image handling with srcSet and sizes attributes for optimal loading performance across devices. Created dynamic property filtering by location, floor, size, and bedrooms with real-time search capabilities. Integrated property rating system (5-star reviews), discount badges, and multi-image carousels for property galleries. Deployed on Netlify with continuous deployment, achieving fast load times and seamless navigation between property listings and detail pages.'
+    ],
+    closingImage: createHeroImage(
+      '/Realestate/work/Footer.png',
+      'Stayli Platform Final Product'
+    ),
+    externalLink: 'https://realsttate.netlify.app/'
+  },
+
   'elev8-rwanda-website': {
     id: 'elev8-rwanda-website',
     title: 'Elev8 Rwanda Corporate Website',
