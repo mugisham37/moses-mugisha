@@ -1,12 +1,16 @@
+'use client'
+
 import React from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { Divider } from '../components/layout/Divider'
-import { GridOverlay } from '../components/layout/GridOverlay'
-import { ScrollReveal } from '../components/animations/ScrollReveal'
-import { Newsletter } from '../components/sections/Newsletter'
+import { useParams } from 'next/navigation'
+import Link from 'next/link'
+import { Divider } from '../layout/Divider'
+import { GridOverlay } from '../layout/GridOverlay'
+import { ScrollReveal } from '../animations/ScrollReveal'
+import { Newsletter } from '../sections/Newsletter'
 
 export const ProjectDetailPage: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>()
+  const params = useParams()
+  const slug = typeof params.slug === 'string' ? params.slug : ''
   const projectName = slug ? slug.charAt(0).toUpperCase() + slug.slice(1) : 'Project'
 
   return (
@@ -18,7 +22,7 @@ export const ProjectDetailPage: React.FC = () => {
           <div style={{ width: '100%', maxWidth: 1480, margin: '0 auto', zIndex: 2, position: 'relative' }}>
             <ScrollReveal>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 48, padding: '0 6px' }}>
-                <Link to="/projects" className="text-span" style={{ color: 'var(--neutral-50)' }}>← Back to Projects</Link>
+                <Link href="/projects" className="text-span" style={{ color: 'var(--neutral-50)' }}>← Back to Projects</Link>
                 <h1 className="text-h1">{projectName}</h1>
                 <div style={{ width: '100%', aspectRatio: '16/9', borderRadius: 3, backgroundColor: 'var(--light-92)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <span className="text-h2" style={{ color: 'var(--neutral-50)' }}>{projectName}</span>

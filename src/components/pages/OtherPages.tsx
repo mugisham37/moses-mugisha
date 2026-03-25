@@ -1,11 +1,14 @@
+'use client'
+
 import React from 'react'
-import { useParams } from 'react-router-dom'
-import { Divider } from '../components/layout/Divider'
-import { GridOverlay } from '../components/layout/GridOverlay'
-import { ScrollReveal } from '../components/animations/ScrollReveal'
+import { useParams } from 'next/navigation'
+import { Divider } from '../layout/Divider'
+import { GridOverlay } from '../layout/GridOverlay'
+import { ScrollReveal } from '../animations/ScrollReveal'
 
 export const LegalPage: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>()
+  const params = useParams()
+  const slug = typeof params.slug === 'string' ? params.slug : ''
   const title = slug === 'privacy' ? 'Privacy Policy' : slug === 'terms' ? 'Terms of Service' : 'Legal'
 
   return (

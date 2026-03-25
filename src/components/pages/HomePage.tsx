@@ -1,13 +1,13 @@
 import React from 'react'
-import { Hero } from '../components/sections/Hero'
-import { Stats } from '../components/sections/Stats'
-import { About } from '../components/sections/About'
-import { FeaturedWork } from '../components/sections/FeaturedWork'
-import { Services } from '../components/sections/Services'
-import { SocialProof } from '../components/sections/SocialProof'
-import { Pricing } from '../components/sections/Pricing'
-import { FAQ } from '../components/sections/FAQ'
-import { Newsletter } from '../components/sections/Newsletter'
+import { Hero } from '../sections/Hero'
+import { Stats } from '../sections/Stats'
+import { About } from '../sections/About'
+import { FeaturedWork } from '../sections/FeaturedWork'
+import { Services } from '../sections/Services'
+import { SocialProof } from '../sections/SocialProof'
+import { Pricing } from '../sections/Pricing'
+import { FAQ } from '../sections/FAQ'
+import { Newsletter } from '../sections/Newsletter'
 
 export const HomePage: React.FC = () => {
   return (

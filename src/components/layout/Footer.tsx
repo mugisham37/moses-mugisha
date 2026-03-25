@@ -1,5 +1,7 @@
+'use client'
+
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { GridOverlay } from './GridOverlay'
 import { Profile } from '../ui/Profile'
 import { Button } from '../ui/Button'
@@ -67,7 +69,7 @@ export const Footer: React.FC = () => {
           }}
         >
           <Link
-            to="/"
+            href="/"
             style={{
               fontFamily: "'Syne', sans-serif",
               fontWeight: 800,
@@ -131,7 +133,7 @@ export const Footer: React.FC = () => {
             {menuLinks.map((link) => (
               <Link
                 key={link.href}
-                to={link.href}
+                href={link.href}
                 style={{
                   display: 'block',
                   width: '100%',

@@ -1,6 +1,8 @@
+'use client'
+
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { DotArrow } from './DotArrow'
 
 interface ButtonProps {
@@ -171,7 +173,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <Link
-      to={href}
+      href={href}
       style={{ display: fullWidth ? 'block' : 'inline-block', width: fullWidth ? '100%' : 'auto' }}
     >
       {content}

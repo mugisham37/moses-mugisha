@@ -1,14 +1,16 @@
+'use client'
+
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Divider } from '../components/layout/Divider'
-import { GridOverlay } from '../components/layout/GridOverlay'
-import { SpanHeading } from '../components/layout/SpanHeading'
-import { Profile } from '../components/ui/Profile'
-import { Button } from '../components/ui/Button'
-import { FAQ } from '../components/sections/FAQ'
-import { Pricing } from '../components/sections/Pricing'
-import { Newsletter } from '../components/sections/Newsletter'
-import { ScrollReveal } from '../components/animations/ScrollReveal'
+import { Divider } from '../layout/Divider'
+import { GridOverlay } from '../layout/GridOverlay'
+import { SpanHeading } from '../layout/SpanHeading'
+import { Profile } from '../ui/Profile'
+import { Button } from '../ui/Button'
+import { FAQ } from '../sections/FAQ'
+import { Pricing } from '../sections/Pricing'
+import { Newsletter } from '../sections/Newsletter'
+import { ScrollReveal } from '../animations/ScrollReveal'
 
 const formFields = [
   { label: 'Name', type: 'text', required: true },

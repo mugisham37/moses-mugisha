@@ -1,6 +1,8 @@
+'use client'
+
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { GridOverlay } from './GridOverlay'
 import { Profile } from '../ui/Profile'
 import { Button } from '../ui/Button'
@@ -72,7 +74,7 @@ export const Nav: React.FC = () => {
         >
           {/* Logo */}
           <Link
-            to="/"
+            href="/"
             style={{
               fontFamily: "'Syne', sans-serif",
               fontWeight: 800,
@@ -211,7 +213,7 @@ export const Nav: React.FC = () => {
                       transition={{ delay: 0.1 + i * 0.05, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <Link
-                        to={link.href}
+                        href={link.href}
                         onClick={() => setIsOpen(false)}
                         style={{
                           display: 'block',

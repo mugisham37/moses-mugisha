@@ -1,9 +1,9 @@
 import React from 'react'
-import { Divider } from '../components/layout/Divider'
-import { GridOverlay } from '../components/layout/GridOverlay'
-import { SpanHeading } from '../components/layout/SpanHeading'
-import { ScrollReveal } from '../components/animations/ScrollReveal'
-import { Newsletter } from '../components/sections/Newsletter'
+import { Divider } from '../layout/Divider'
+import { GridOverlay } from '../layout/GridOverlay'
+import { SpanHeading } from '../layout/SpanHeading'
+import { ScrollReveal } from '../animations/ScrollReveal'
+import { Newsletter } from '../sections/Newsletter'
 
 export const ProjectsPage: React.FC = () => (
   <>
