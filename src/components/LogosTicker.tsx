@@ -1,3 +1,5 @@
+'use client';
+
 import Marquee from 'react-fast-marquee';
 import { clientLogos } from '../data/projects';
 import styles from './LogosTicker.module.css';

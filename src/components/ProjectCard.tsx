@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import type { Project } from '../data/projects';
 import styles from './ProjectCard.module.css';
@@ -9,7 +11,7 @@ interface Props {
 
 export default function ProjectCard({ project }: Props) {
   return (
-    <Link to={`/work/${project.slug}`} className={styles.card}>
+    <Link href={`/work/${project.slug}`} className={styles.card}>
       <motion.div className={styles.imageContainer} whileHover="hover">
         <motion.img
           src={project.image}

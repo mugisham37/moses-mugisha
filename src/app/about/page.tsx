@@ -1,3 +1,5 @@
+'use client';
+
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
 import ServiceCard from '../components/ServiceCard';
 import ToolsCard from '../components/ToolsCard';

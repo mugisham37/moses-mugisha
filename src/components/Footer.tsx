@@ -1,5 +1,7 @@
+'use client';
+
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Marquee from 'react-fast-marquee';
 import styles from './Footer.module.css';
 
@@ -14,7 +16,7 @@ export default function Footer() {
 
         {/* Let's Talk Ticker */}
         <Link
-          to="/contact"
+          href="/contact"
           className={`${styles.tickerSection} ${isHovered ? styles.tickerHovered : ''}`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}

@@ -1,3 +1,5 @@
+'use client';
+
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
 import ProjectCard from '../components/ProjectCard';
 import MiscRow from '../components/MiscRow';

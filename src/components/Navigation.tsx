@@ -1,4 +1,7 @@
-import { Link, useLocation } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { List, X } from '@phosphor-icons/react';
@@ -6,7 +9,7 @@ import { images } from '../data/projects';
 import styles from './Navigation.module.css';
 
 export default function Navigation() {
-  const location = useLocation();
+  const pathname = usePathname();
   const [time, setTime] = useState(new Date());
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -17,7 +20,7 @@ export default function Navigation() {
 
   useEffect(() => {
     setMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   const timeStr = time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
@@ -34,7 +37,7 @@ export default function Navigation() {
       <div className={styles.inner}>
         {/* Logo — 25% */}
         <div className={styles.logoSection}>
-          <Link to="/" className={styles.logo}>
+          <Link href="/" className={styles.logo}>
             <img src={images.logo} alt="Maelle" className={styles.logoImg} />
           </Link>
         </div>
@@ -44,7 +47,7 @@ export default function Navigation() {
           {navLinks.map((link, i) => (
             <Link
               key={link.path}
-              to={link.path}
+              href={link.path}
               className={`${styles.navLink} btn-14-semibold primary-button`}
             >
               {link.label}{i < navLinks.length - 1 ? ',' : ''}
@@ -93,7 +96,7 @@ export default function Navigation() {
             {navLinks.map((link) => (
               <Link
                 key={link.path}
-                to={link.path}
+                href={link.path}
                 className={`${styles.mobileLink} btn-14-semibold`}
               >
                 {link.label}
