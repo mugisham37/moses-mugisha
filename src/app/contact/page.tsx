@@ -1,20 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { PageLayout } from '@/components/PageLayout';
-import { Footer } from '@/components/Footer';
-import { ContactForm } from '@/components/ContactForm';
-import { PrimaryButton } from '@/components/PrimaryButton';
-import { SocialIcon } from '@/components/SocialIcon';
+import ThreeColumnLayout from '@/components/layout/ThreeColumnLayout';
+import { Footer } from '@/components/layout/Footer';
+import { ContactForm } from '@/components/sections/ContactForm';
+import { PrimaryButton } from '@/components/ui/PrimaryButton';
+import { SocialIcon } from '@/components/ui/SocialIcon';
 import { fadeSlideUp, staggerContainer } from '@/lib/animations';
 
 // Contact page — /contact (HideSIC3k in Framer)
-// Left: empty | Middle: title + subtitle + form | Right: empty
+// Left: contact buttons + socials | Middle: title + subtitle + form | Right: empty
 
 export default function ContactPage() {
   return (
     <>
-      <PageLayout
+      <ThreeColumnLayout
         left={
           // Left has contact buttons and socials at bottom (from Framer XML)
           <motion.div
@@ -115,85 +115,4 @@ export default function ContactPage() {
       <Footer />
     </>
   );
-}
-'use client';
-
-import ThreeColumnLayout from '../../components/ThreeColumnLayout';
-import ContactForm from '../../components/ContactForm';
-import ContactButtons from '../../components/ContactButtons';
-import SocialIcons from '../../components/SocialIcons';
-import Footer from '../../components/Footer';
-import { AnimatedContainer, AnimatedItem } from '../../components/AnimatedPage';
-import styles from './Contact.module.css';
-
-export default function Contact() {
-  return (
-    <>
-      <ThreeColumnLayout
-        left={<div />}
-        middle={
-          <div className={styles.middleContent}>
-            <AnimatedContainer className={styles.titleArea}>
-              <AnimatedItem>
-                <h1 className="heading-1">Reach out.</h1>
-              </AnimatedItem>
-              <AnimatedItem>
-                <p className="text-16" style={{ maxWidth: 520 }}>
-                  I&apos;d love to hear from you. Whether you&apos;re looking to collaborate on a new project, discuss a commission, or simply say hello
-                </p>
-              </AnimatedItem>
-            </AnimatedContainer>
-
-            <AnimatedItem>
-              <div className={styles.contactRow}>
-                <ContactButtons />
-                <SocialIcons direction="horizontal" />
-              </div>
-            </AnimatedItem>
-
-            <AnimatedItem style={{ width: '100%' }}>
-              <ContactForm />
-            </AnimatedItem>
-
-            <div style={{ paddingTop: 146 }}>
-              <div style={{ height: '40vh', opacity: 0 }} />
-            </div>
-          </div>
-        }
-        right={<div />}
-      />
-      <Footer />
-    </>
-  );
-}
-.middleContent {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.titleArea {
-  position: sticky;
-  top: 140px;
-  z-index: 1;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding-bottom: 40px;
-}
-
-.contactRow {
-  width: 100%;
-  display: flex;
-  gap: 8px;
-  align-items: flex-end;
-}
-
-@media (max-width: 1199px) {
-  .titleArea {
-    position: relative;
-    top: 0;
-  }
 }
