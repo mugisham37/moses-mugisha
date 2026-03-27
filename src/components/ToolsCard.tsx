@@ -15,3 +15,23 @@ export default function ToolsCard({ name, description }: Props) {
     </div>
   );
 }
+.card {
+  border: 1px solid var(--light-gray);
+  border-radius: 0;
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--black);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}

@@ -17,3 +17,17 @@ export default function MiscRow({ label, value, hasLine = true }: Props) {
     </div>
   );
 }
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.content {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}

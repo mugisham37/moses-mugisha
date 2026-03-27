@@ -1,4 +1,4 @@
-import styles from './AwardRow.module.css';
+
 
 interface Props {
   title: string;
@@ -20,4 +20,24 @@ export default function AwardRow({ title, org, year, hasLine = true }: Props) {
       {hasLine && <div className="divider" />}
     </div>
   );
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.titleCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
 }
