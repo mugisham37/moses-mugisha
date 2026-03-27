@@ -48,12 +48,13 @@ export default function ContactPage() {
               style={{
                 position: 'sticky',
                 top: '140px',
-                zIndex: 1,
+                zIndex: 10,
                 backgroundColor: '#ffffff',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '16px',
                 paddingBottom: '40px',
+                width: '100%',
               }}
             >
               <motion.div
@@ -97,7 +98,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              style={{ display: 'flex', flexDirection: 'column', gap: '32px', paddingTop: '32px', paddingBottom: '20px' }}
+              style={{ display: 'flex', flexDirection: 'column', gap: '32px', paddingTop: '32px', paddingBottom: '20px', width: '100%' }}
             >
               {/* Divider above form */}
               <div style={{ height: '1px', backgroundColor: '#e3e3e3' }} />

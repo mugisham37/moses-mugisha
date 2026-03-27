@@ -66,4 +66,7 @@ html.lenis body {
 
 .ticker-track {
   animation: ticker linear infinite;
+  display: flex;
+  align-items: center;
+  width: max-content;
 }

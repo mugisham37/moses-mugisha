@@ -14,7 +14,7 @@
 .left {
   position: sticky;
   top: 0;
-  width: 25%;
+  width: 20%;
   height: 100vh;
   flex-shrink: 0;
   z-index: 3;
@@ -36,14 +36,13 @@
   padding: 140px 16px 0 16px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-/* sticky, 25%, 100vh, top 0, z-index 3, padding 140px 0 8px 0, space-between */
+/* sticky, 20%, 100vh, top 0, z-index 3, padding 140px 0 8px 0, space-between */
 .right {
   position: sticky;
   top: 0;
-  width: 25%;
+  width: 20%;
   height: 100vh;
   flex-shrink: 0;
   z-index: 3;

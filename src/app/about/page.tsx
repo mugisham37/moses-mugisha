@@ -136,6 +136,20 @@ export default function AboutPage() {
         }
         middle={
           <div style={{ display: 'flex', flexDirection: 'column', gap: '120px', width: '100%' }}>
+            {/* Profile photo — tablet/mobile only (left column hidden at ≤1199px) */}
+            <div className="about-mobile-profile" style={{ display: 'none' }}>
+              <div style={{ width: '120px', height: '160px', position: 'relative', overflow: 'hidden' }}>
+                <Image
+                  src="/images/profile-about.jpg"
+                  alt="Maelle profile"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="120px"
+                  priority
+                />
+              </div>
+            </div>
+
             {/* Bio text */}
             <ScrollReveal>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -311,7 +325,7 @@ export default function AboutPage() {
                 </div>
               </motion.div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                {awards.map((award, i) => (
+                {awards.map((award) => (
                   <motion.div key={award.title} variants={fadeSlideUp}>
                     <AwardItem
                       title={award.title}
@@ -327,6 +341,11 @@ export default function AboutPage() {
         }
       />
       <Footer />
+      <style>{`
+        @media (max-width: 1199px) {
+          .about-mobile-profile { display: block !important; }
+        }
+      `}</style>
     </>
   );
 }

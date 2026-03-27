@@ -31,7 +31,7 @@ export function Footer() {
         {/* Left spacer — matches left column width */}
         <div
           className="footer-spacer"
-          style={{ width: '25%', flexShrink: 0, opacity: 0, pointerEvents: 'none' }}
+          style={{ width: '20%', flexShrink: 0, opacity: 0, pointerEvents: 'none' }}
           aria-hidden="true"
         />
 
@@ -182,7 +182,7 @@ export function Footer() {
         {/* Right spacer */}
         <div
           className="footer-spacer"
-          style={{ width: '25%', flexShrink: 0, opacity: 0, pointerEvents: 'none' }}
+          style={{ width: '20%', flexShrink: 0, opacity: 0, pointerEvents: 'none' }}
           aria-hidden="true"
         />
       </footer>

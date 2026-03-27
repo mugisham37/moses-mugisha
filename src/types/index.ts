@@ -13,6 +13,7 @@ export interface Project {
 export interface Service {
   title: string;
   description: string;
+  image?: string;
 }
 
 export interface Tool {

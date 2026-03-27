@@ -87,6 +87,7 @@ export function Navigation() {
         }}
       >
         <nav
+          className="nav-inner"
           style={{
             maxWidth: '1200px',
             margin: '0 auto',
@@ -99,7 +100,7 @@ export function Navigation() {
           }}
         >
           {/* Logo zone — 25% width, left aligned */}
-          <div style={{ width: '25%', flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+          <div className="nav-logo-zone" style={{ width: '25%', flexShrink: 0, display: 'flex', alignItems: 'center' }}>
             <Link href="/" style={{ borderRadius: '30px', overflow: 'visible', display: 'flex' }}>
               <Image
                 src="/images/logo.svg"
@@ -293,6 +294,8 @@ export function Navigation() {
           .nav-time-desktop { display: none !important; }
           .nav-cta-desktop { display: none !important; }
           .nav-hamburger { display: block !important; }
+          .nav-inner { justify-content: space-between !important; gap: 0 !important; }
+          .nav-logo-zone { width: auto !important; }
         }
         /* Tablet: show nav links, hide time/CTA */
         @media (min-width: 810px) and (max-width: 1199px) {

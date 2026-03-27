@@ -76,21 +76,25 @@ export const services: Service[] = [
     title: '1. Visual Identity',
     description:
       'Creating thoughtful, cohesive brand identities that reflect your story and values, from logo design and typography to color palettes and brand guidelines.',
+    image: '/images/profile-home.jpg',
   },
   {
     title: '2. Web Design',
     description:
       'Designing intuitive, elegant websites that balance aesthetics and usability. Whether it\'s a portfolio, landing page, or full site, I craft digital experiences that connect.',
+    image: '/images/profile-about.jpg',
   },
   {
     title: '3. Photography',
     description:
       'Capturing authentic, atmospheric visuals that enhance your brand and tell a story — including lifestyle, editorial, product, and brand photography.',
+    image: '/images/profile-home.jpg',
   },
   {
     title: '4. Graphic Design',
     description:
       'Designing visuals for both digital and print, including social media assets, lookbooks, packaging, posters, and other creative collateral.',
+    image: '/images/profile-about.jpg',
   },
 ];
 

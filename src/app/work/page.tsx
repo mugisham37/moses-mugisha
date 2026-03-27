@@ -48,12 +48,13 @@ export default function WorkPage() {
               style={{
                 position: 'sticky',
                 top: '140px',
-                zIndex: 1,
+                zIndex: 10,
                 backgroundColor: '#ffffff',
                 display: 'flex',
                 gap: '24px',
                 alignItems: 'flex-start',
                 paddingBottom: '40px',
+                width: '100%',
               }}
             >
               <motion.h1
