@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useTransition } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { List, X } from '@phosphor-icons/react';
 import { images } from '../data/projects';
@@ -13,13 +14,24 @@ export default function Navigation() {
   const [time, setTime] = useState(new Date());
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const menuOpenRef = useRef(false);
+  const [, startTransition] = useTransition();
+
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 60000);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    setMenuOpen(false);
+    menuOpenRef.current = menuOpen;
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (menuOpenRef.current) {
+      startTransition(() => {
+        setMenuOpen(false);
+      });
+    }
   }, [pathname]);
 
   const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -38,7 +50,7 @@ export default function Navigation() {
         {/* Logo — 25% */}
         <div className={styles.logoSection}>
           <Link href="/" className={styles.logo}>
-            <img src={images.logo} alt="Maelle" className={styles.logoImg} />
+            <Image src={images.logo} alt="Maelle" className={styles.logoImg} width={40} height={18} />
           </Link>
         </div>
 

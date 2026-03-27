@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import ThreeColumnLayout from '../components/ThreeColumnLayout';
-import ProjectCard from '../components/ProjectCard';
-import Footer from '../components/Footer';
-import { AnimatedContainer, AnimatedItem } from '../components/AnimatedPage';
-import { projects } from '../data/projects';
+import ThreeColumnLayout from '../../components/ThreeColumnLayout';
+import ProjectCard from '../../components/ProjectCard';
+import Footer from '../../components/Footer';
+import { AnimatedContainer, AnimatedItem } from '../../components/AnimatedPage';
+import { projects } from '../../data/projects';
 import styles from './Work.module.css';
 
 export default function Work() {

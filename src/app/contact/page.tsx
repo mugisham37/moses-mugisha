@@ -1,9 +1,11 @@
-import ThreeColumnLayout from '../components/ThreeColumnLayout';
-import ContactForm from '../components/ContactForm';
-import ContactButtons from '../components/ContactButtons';
-import SocialIcons from '../components/SocialIcons';
-import Footer from '../components/Footer';
-import { AnimatedContainer, AnimatedItem } from '../components/AnimatedPage';
+'use client';
+
+import ThreeColumnLayout from '../../components/ThreeColumnLayout';
+import ContactForm from '../../components/ContactForm';
+import ContactButtons from '../../components/ContactButtons';
+import SocialIcons from '../../components/SocialIcons';
+import Footer from '../../components/Footer';
+import { AnimatedContainer, AnimatedItem } from '../../components/AnimatedPage';
 import styles from './Contact.module.css';
 
 export default function Contact() {
@@ -19,7 +21,7 @@ export default function Contact() {
               </AnimatedItem>
               <AnimatedItem>
                 <p className="text-16" style={{ maxWidth: 520 }}>
-                  I'd love to hear from you. Whether you're looking to collaborate on a new project, discuss a commission, or simply say hello
+                  I&apos;d love to hear from you. Whether you&apos;re looking to collaborate on a new project, discuss a commission, or simply say hello
                 </p>
               </AnimatedItem>
             </AnimatedContainer>

@@ -29,21 +29,21 @@ export default function Footer() {
                   className="diamond diamond-lg"
                   style={{ backgroundColor: isHovered ? 'rgba(255,255,255,0.5)' : undefined }}
                 />
-                <span className={`heading-2-l ${styles.tickerText}`}>Let's Talk</span>
+                <span className={`heading-2-l ${styles.tickerText}`}>Let&apos;s Talk</span>
               </div>
               <div className={styles.tickerItem}>
                 <span
                   className="diamond diamond-lg"
                   style={{ backgroundColor: isHovered ? 'rgba(255,255,255,0.5)' : undefined }}
                 />
-                <span className={`heading-2-l ${styles.tickerText}`}>Let's Talk</span>
+                <span className={`heading-2-l ${styles.tickerText}`}>Let&apos;s Talk</span>
               </div>
               <div className={styles.tickerItem}>
                 <span
                   className="diamond diamond-lg"
                   style={{ backgroundColor: isHovered ? 'rgba(255,255,255,0.5)' : undefined }}
                 />
-                <span className={`heading-2-l ${styles.tickerText}`}>Let's Talk</span>
+                <span className={`heading-2-l ${styles.tickerText}`}>Let&apos;s Talk</span>
               </div>
             </Marquee>
           </div>

@@ -1,18 +1,19 @@
 'use client';
 
-import ThreeColumnLayout from '../components/ThreeColumnLayout';
-import ServiceCard from '../components/ServiceCard';
-import ToolsCard from '../components/ToolsCard';
-import ExperienceCard from '../components/ExperienceCard';
-import MiscRow from '../components/MiscRow';
-import AwardRow from '../components/AwardRow';
-import LogosTicker from '../components/LogosTicker';
-import FAQAccordion from '../components/FAQAccordion';
-import SocialIcons from '../components/SocialIcons';
-import ContactButtons from '../components/ContactButtons';
-import Footer from '../components/Footer';
-import { AnimatedContainer, AnimatedItem } from '../components/AnimatedPage';
-import { images, serviceDetails, tools, experience, stats, awards, faqs } from '../data/projects';
+import Image from 'next/image';
+import ThreeColumnLayout from '../../components/ThreeColumnLayout';
+import ServiceCard from '../../components/ServiceCard';
+import ToolsCard from '../../components/ToolsCard';
+import ExperienceCard from '../../components/ExperienceCard';
+import MiscRow from '../../components/MiscRow';
+import AwardRow from '../../components/AwardRow';
+import LogosTicker from '../../components/LogosTicker';
+import FAQAccordion from '../../components/FAQAccordion';
+import SocialIcons from '../../components/SocialIcons';
+import ContactButtons from '../../components/ContactButtons';
+import Footer from '../../components/Footer';
+import { AnimatedContainer, AnimatedItem } from '../../components/AnimatedPage';
+import { images, serviceDetails, tools, experience, stats, awards, faqs } from '../../data/projects';
 import { DownloadSimple } from '@phosphor-icons/react';
 import styles from './About.module.css';
 
@@ -41,7 +42,7 @@ function AboutLeft() {
       <AnimatedItem>
         <div className={styles.leftPhoto}>
           <div className={styles.leftProfileImg}>
-            <img src={images.profileAbout} alt="Maelle" />
+            <Image src={images.profileAbout} alt="Maelle" width={400} height={400} />
           </div>
           <span className="text-14">© 2013-25</span>
         </div>
@@ -65,12 +66,12 @@ function AboutMiddle() {
       <AnimatedContainer className={styles.section}>
         <AnimatedItem>
           <p className="heading-2" style={{ maxWidth: 600 }}>
-            I'm Maelle — a digital designer and photographer based in France, with over 12 years of experience crafting visual stories across digital, editorial, and lifestyle spaces.
+            I&apos;m Maelle — a digital designer and photographer based in France, with over 12 years of experience crafting visual stories across digital, editorial, and lifestyle spaces.
           </p>
         </AnimatedItem>
         <AnimatedItem>
           <p className="text-16" style={{ maxWidth: 520 }}>
-            Whether I'm designing a brand's digital presence or capturing quiet moments on camera, I approach every project with care, intention, and a strong sense of visual narrative.
+            Whether I&apos;m designing a brand&apos;s digital presence or capturing quiet moments on camera, I approach every project with care, intention, and a strong sense of visual narrative.
           </p>
         </AnimatedItem>
       </AnimatedContainer>

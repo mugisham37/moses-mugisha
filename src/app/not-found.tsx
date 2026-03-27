@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
 import Footer from '../components/Footer';
 import { AnimatedContainer, AnimatedItem } from '../components/AnimatedPage';
@@ -17,14 +19,14 @@ export default function NotFound() {
               </AnimatedItem>
               <AnimatedItem>
                 <p className="text-16" style={{ maxWidth: 520 }}>
-                  It seems like you've stumbled upon a page that doesn't exist.
+                  It seems like you&apos;ve stumbled upon a page that doesn&apos;t exist.
                 </p>
               </AnimatedItem>
             </AnimatedContainer>
 
             <AnimatedItem>
               <div className={styles.buttonRow}>
-                <Link to="/" className="primary-button btn-16-semibold">
+                <Link href="/" className="primary-button btn-16-semibold">
                   Back to Home
                 </Link>
               </div>

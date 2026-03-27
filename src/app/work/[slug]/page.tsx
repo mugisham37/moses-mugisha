@@ -1,13 +1,17 @@
-import { useParams, Link } from 'react-router-dom';
-import ThreeColumnLayout from '../components/ThreeColumnLayout';
-import ProjectCard from '../components/ProjectCard';
-import Footer from '../components/Footer';
-import { AnimatedContainer, AnimatedItem } from '../components/AnimatedPage';
-import { projects } from '../data/projects';
+'use client';
+
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
+import ThreeColumnLayout from '../../../components/ThreeColumnLayout';
+import ProjectCard from '../../../components/ProjectCard';
+import Footer from '../../../components/Footer';
+import { AnimatedContainer, AnimatedItem } from '../../../components/AnimatedPage';
+import { projects } from '../../../data/projects';
 import styles from './WorkDetail.module.css';
 
 export default function WorkDetail() {
-  const { slug } = useParams();
+  const params = useParams();
+  const slug = params.slug as string;
   const project = projects.find(p => p.slug === slug);
   const currentIndex = projects.findIndex(p => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
@@ -16,7 +20,7 @@ export default function WorkDetail() {
     return (
       <div style={{ padding: '200px 20px', textAlign: 'center' }}>
         <h1 className="heading-1">Project Not Found</h1>
-        <Link to="/work" className="primary-button btn-16-semibold" style={{ marginTop: 20, display: 'inline-block' }}>
+        <Link href="/work" className="primary-button btn-16-semibold" style={{ marginTop: 20, display: 'inline-block' }}>
           Back to Work
         </Link>
       </div>
