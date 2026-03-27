@@ -1,0 +1,25 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.answer {
+  padding: 0 0 16px 0;
+}

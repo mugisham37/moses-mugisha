@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tickerWrap {
+  padding: 24px 0;
+  overflow: hidden;
+}
