@@ -1,0 +1,129 @@
+.middleContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  align-items: center;
+}
+
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 16px;
+  z-index: 1;
+}
+
+.experienceHeader {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.downloadCv {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.serviceCards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.toolsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.experienceCards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Left column */
+.leftPhoto {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 55%;
+}
+
+.leftProfileImg {
+  width: 100%;
+  height: 213px;
+  overflow: hidden;
+}
+
+.leftProfileImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.leftBottom {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  width: 100%;
+}
+
+/* Right column */
+.statsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.awardsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.awardsTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.awardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+@media (max-width: 1199px) {
+  .middleContent {
+    gap: 80px;
+  }
+}
+
+@media (max-width: 809px) {
+  .middleContent {
+    gap: 60px;
+  }
+  .toolsGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,38 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--white);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.imageContainer {
+  width: 100%;
+  aspect-ratio: 1.333;
+  overflow: hidden;
+  position: relative;
+}
+
+.image {
+  width: calc(100% + 18px);
+  height: calc(100% + 14px);
+  margin: -7px -9px;
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.titleRow {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+}

@@ -1,0 +1,104 @@
+.footer {
+  display: flex;
+  gap: 32px;
+  padding: 0 20px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer::before,
+.footer::after {
+  content: '';
+  width: 25%;
+  flex-shrink: 0;
+}
+
+.container {
+  flex: 1;
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-bottom: none;
+  z-index: 1;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+
+.tickerSection {
+  display: block;
+  text-decoration: none;
+  color: var(--black);
+  background: var(--white);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.tickerHovered {
+  background-color: var(--black) !important;
+  color: var(--white) !important;
+}
+
+.tickerWrap {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tickerItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.tickerText {
+  white-space: nowrap;
+}
+
+.bottom {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.createdBy {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  flex: 1;
+}
+
+.copyright {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+@media (max-width: 1199px) {
+  .footer::before,
+  .footer::after {
+    display: none;
+  }
+}
+
+@media (max-width: 809px) {
+  .bottom {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+
+  .tickerWrap {
+    height: 70px;
+  }
+
+  .tickerText {
+    font-size: 40px !important;
+  }
+}

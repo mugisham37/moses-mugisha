@@ -1,0 +1,30 @@
+.form {
+  width: 100%;
+  padding: 32px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 1;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.submitBtn {
+  padding: 8px 0;
+  text-align: left;
+  transition: opacity 0.2s ease;
+}
+
+.submitBtn:disabled {
+  cursor: not-allowed;
+}

@@ -1,0 +1,135 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--white);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 12px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logoSection {
+  width: 25%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 30px;
+}
+
+.logoImg {
+  height: 18px;
+  width: auto;
+}
+
+.pagesDesktop {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding-left: 16px;
+}
+
+.navLink {
+  white-space: nowrap;
+}
+
+.rightSection {
+  width: 25%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dateTime {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.dateTimeText {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4em;
+  letter-spacing: -0.03em;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+.menuToggle {
+  display: none;
+  padding: 4px;
+}
+
+.mobileMenu {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 20px 16px;
+  gap: 12px;
+  background: var(--white);
+}
+
+.mobileLink {
+  display: block;
+  padding: 8px 0;
+  color: var(--black);
+}
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .inner {
+    max-width: 810px;
+  }
+
+  .logoSection {
+    width: auto;
+  }
+
+  .rightSection {
+    width: auto;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .dateTime {
+    display: none;
+  }
+}
+
+/* Phone */
+@media (max-width: 809px) {
+  .inner {
+    max-width: 390px;
+  }
+
+  .pagesDesktop {
+    display: none;
+  }
+
+  .rightSection {
+    display: none;
+  }
+
+  .menuToggle {
+    display: flex;
+    margin-left: auto;
+  }
+}

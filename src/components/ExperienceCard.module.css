@@ -1,0 +1,28 @@
+.card {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 16px;
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.titleSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 809px) {
+  .card {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
