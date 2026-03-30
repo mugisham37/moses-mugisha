@@ -7,7 +7,6 @@ import { useState, useEffect, useRef, useTransition } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { List, X } from '@phosphor-icons/react';
 import { images } from '../data/projects';
-import styles from './Navigation.module.css';
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -45,22 +44,22 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className={styles.nav}>
-      <div className={styles.inner}>
+    <nav className="fixed top-0 left-0 right-0 z-[100] bg-white">
+      <div className="flex items-center gap-8 px-5 py-3 max-w-[1200px] mx-auto max-tablet:max-w-[810px] max-phone:max-w-[390px]">
         {/* Logo — 25% */}
-        <div className={styles.logoSection}>
-          <Link href="/" className={styles.logo}>
-            <Image src={images.logo} alt="Maelle" className={styles.logoImg} width={40} height={18} />
+        <div className="w-1/4 shrink-0 flex items-center max-tablet:w-auto">
+          <Link href="/" className="inline-flex items-center gap-1.5 rounded-[30px]">
+            <Image src={images.logo} alt="Maelle" className="h-[18px] w-auto" width={40} height={18} />
           </Link>
         </div>
 
         {/* Desktop Links — flex 1 */}
-        <div className={styles.pagesDesktop}>
+        <div className="flex-1 flex gap-1 items-center pl-4 max-phone:hidden">
           {navLinks.map((link, i) => (
             <Link
               key={link.path}
               href={link.path}
-              className={`${styles.navLink} btn-14-semibold primary-button`}
+              className="whitespace-nowrap btn-14-semibold primary-button"
             >
               {link.label}{i < navLinks.length - 1 ? ',' : ''}
             </Link>
@@ -68,9 +67,9 @@ export default function Navigation() {
         </div>
 
         {/* Date/Time + CTA — 25% desktop */}
-        <div className={styles.rightSection}>
-          <div className={styles.dateTime}>
-            <span className={styles.dateTimeText}>{dateStr}, {timeStr}</span>
+        <div className="w-1/4 shrink-0 flex items-center justify-center gap-2 max-tablet:w-auto max-tablet:flex-1 max-tablet:justify-end max-phone:hidden">
+          <div className="flex-1 flex justify-start items-center max-tablet:hidden">
+            <span className="text-[14px] leading-[1.4] tracking-[-0.03em] text-slate whitespace-nowrap">{dateStr}, {timeStr}</span>
           </div>
           <a
             href="https://cal.com/"
@@ -84,7 +83,7 @@ export default function Navigation() {
 
         {/* Mobile menu toggle */}
         <button
-          className={styles.menuToggle}
+          className="hidden max-phone:flex max-phone:ml-auto p-1"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -99,7 +98,7 @@ export default function Navigation() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className={styles.mobileMenu}
+            className="overflow-hidden flex flex-col px-5 pb-4 pt-2 gap-3 bg-white"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -109,7 +108,7 @@ export default function Navigation() {
               <Link
                 key={link.path}
                 href={link.path}
-                className={`${styles.mobileLink} btn-14-semibold`}
+                className="block py-2 text-ink btn-14-semibold"
               >
                 {link.label}
               </Link>
@@ -118,7 +117,7 @@ export default function Navigation() {
               href="https://cal.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className={`${styles.mobileLink} btn-14-medium`}
+              className="block py-2 text-ink btn-14-medium"
             >
               Book a Call
             </a>

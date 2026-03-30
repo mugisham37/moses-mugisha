@@ -12,11 +12,7 @@ export default function SocialIcons({ direction = 'vertical' }: Props) {
   ];
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: direction === 'vertical' ? 'column' : 'row',
-      gap: 8,
-    }}>
+    <div className={`flex gap-2 ${direction === 'vertical' ? 'flex-col' : 'flex-row'}`}>
       {icons.map(({ Icon, href, label }) => (
         <a
           key={label}

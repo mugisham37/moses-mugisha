@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-ink:    rgb(18, 18, 18);
+  --color-silver: rgb(227, 227, 227);
+  --color-slate:  rgb(117, 117, 117);
+
+  /* Custom breakpoints — max-tablet: = ≤1199px, max-phone: = ≤809px */
+  --breakpoint-tablet: 1200px;
+  --breakpoint-phone:  810px;
+}

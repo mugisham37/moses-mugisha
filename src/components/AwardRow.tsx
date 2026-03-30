@@ -1,5 +1,3 @@
-import styles from './AwardRow.module.css';
-
 interface Props {
   title: string;
   org: string;
@@ -9,9 +7,9 @@ interface Props {
 
 export default function AwardRow({ title, org, year, hasLine = true }: Props) {
   return (
-    <div className={styles.row}>
-      <div className={styles.content}>
-        <div className={styles.titleCol}>
+    <div className="flex flex-col gap-1.5 w-full">
+      <div className="flex gap-2 justify-between items-end">
+        <div className="flex flex-col gap-px flex-1">
           <span className="text-16">{title}</span>
           <span className="text-14">{org}</span>
         </div>

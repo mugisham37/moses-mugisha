@@ -1,6 +1,6 @@
 export default function ContactButtons() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
+    <div className="flex flex-col gap-1 flex-1">
       <a href="mailto:hello@maelle.design" className="primary-button btn-16-semibold">
         hello@maelle.design
       </a>
