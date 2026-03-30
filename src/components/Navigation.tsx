@@ -44,12 +44,12 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] bg-white">
+    <nav className="fixed top-0 left-0 right-0 z-100 bg-white">
       <div className="flex items-center gap-8 px-5 py-3 max-w-[1200px] mx-auto max-tablet:max-w-[810px] max-phone:max-w-[390px]">
         {/* Logo — 25% */}
         <div className="w-1/4 shrink-0 flex items-center max-tablet:w-auto">
           <Link href="/" className="inline-flex items-center gap-1.5 rounded-[30px]">
-            <Image src={images.logo} alt="Maelle" className="h-[18px] w-auto" width={40} height={18} />
+            <Image src={images.logo} alt="Maelle" className="h-4.5 w-auto" width={40} height={18} />
           </Link>
         </div>
 

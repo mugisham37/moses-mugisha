@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import styles from './ContactForm.module.css';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'default' | 'loading' | 'success' | 'error'>('default');
@@ -16,10 +15,10 @@ export default function ContactForm() {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className="w-full pt-8 pb-5 flex flex-col gap-8" onSubmit={handleSubmit}>
       <div className="divider" />
-      <div className={styles.fields}>
-        <div className={styles.field}>
+      <div className="flex flex-col gap-6 z-1">
+        <div className="flex flex-col gap-1">
           <label className="text-14">Name*</label>
           <input
             type="text"
@@ -29,7 +28,7 @@ export default function ContactForm() {
             required
           />
         </div>
-        <div className={styles.field}>
+        <div className="flex flex-col gap-1">
           <label className="text-14">Email*</label>
           <input
             type="email"
@@ -39,7 +38,7 @@ export default function ContactForm() {
             required
           />
         </div>
-        <div className={styles.field}>
+        <div className="flex flex-col gap-1">
           <label className="text-14">Phone</label>
           <input
             type="tel"
@@ -48,7 +47,7 @@ export default function ContactForm() {
             onChange={e => setForm({ ...form, phone: e.target.value })}
           />
         </div>
-        <div className={styles.field}>
+        <div className="flex flex-col gap-1">
           <label className="text-14">Message*</label>
           <textarea
             className="form-field"
@@ -59,9 +58,8 @@ export default function ContactForm() {
         </div>
         <button
           type="submit"
-          className={`primary-button btn-16-semibold ${styles.submitBtn}`}
+          className={`primary-button btn-16-semibold py-2 text-left transition-opacity duration-200 disabled:cursor-not-allowed ${isDisabled ? 'opacity-50' : 'opacity-100'}`}
           disabled={isDisabled || status === 'loading'}
-          style={{ opacity: isDisabled ? 0.5 : 1 }}
         >
           {status === 'loading' ? 'Sending...' : status === 'success' ? 'Message Sent!' : status === 'error' ? 'Error — Try Again' : 'Send Message'}
         </button>

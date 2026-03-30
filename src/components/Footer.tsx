@@ -9,7 +9,7 @@ export default function Footer() {
 
   return (
     <footer className="flex gap-8 px-5 justify-center items-center max-w-[1200px] mx-auto before:content-[''] before:w-1/4 before:shrink-0 after:content-[''] after:w-1/4 after:shrink-0 max-tablet:before:hidden max-tablet:after:hidden">
-      <div className="flex-1 bg-white border border-silver border-b-0 z-[1] overflow-hidden pb-2">
+      <div className="flex-1 bg-white border border-silver border-b-0 z-1 overflow-hidden pb-2">
         {/* Spacer */}
         <div className="h-[20vh]" />
 
@@ -21,7 +21,7 @@ export default function Footer() {
           onMouseLeave={() => setIsHovered(false)}
         >
           <div className="divider" style={{ backgroundColor: isHovered ? 'rgba(255,255,255,0.2)' : undefined }} />
-          <div className="h-[100px] flex items-center overflow-hidden max-phone:h-[70px]">
+          <div className="h-25 flex items-center overflow-hidden max-phone:h-17.5">
             <Marquee speed={50} direction="left" gradient={false} pauseOnHover={false}>
               <div className="flex items-center gap-5 px-2.5">
                 <span

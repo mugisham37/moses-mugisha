@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from '@phosphor-icons/react';
-import styles from './FAQAccordion.module.css';
 
 interface FAQItem {
   question: string;
@@ -18,11 +17,11 @@ export default function FAQAccordion({ items }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className={styles.accordion}>
+    <div className="flex flex-col gap-1.5">
       {items.map((item, i) => (
-        <div key={i} className={styles.item}>
+        <div key={i} className="flex flex-col">
           <button
-            className={styles.question}
+            className="flex justify-between items-center gap-4 py-3 w-full text-left cursor-pointer"
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
           >
             <span className="heading-3">{item.question}</span>
@@ -39,9 +38,9 @@ export default function FAQAccordion({ items }: Props) {
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.35, ease: 'easeOut' }}
-                style={{ overflow: 'hidden' }}
+                className="overflow-hidden"
               >
-                <div className={styles.answer}>
+                <div className="pb-4">
                   <p className="text-16">{item.answer}</p>
                 </div>
               </motion.div>
