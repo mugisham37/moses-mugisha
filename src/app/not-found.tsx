@@ -4,7 +4,6 @@ import Link from 'next/link';
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
 import Footer from '../components/Footer';
 import { AnimatedContainer, AnimatedItem } from '../components/AnimatedPage';
-import styles from './NotFound.module.css';
 
 export default function NotFound() {
   return (
@@ -12,28 +11,28 @@ export default function NotFound() {
       <ThreeColumnLayout
         left={<div />}
         middle={
-          <div className={styles.middleContent}>
-            <AnimatedContainer className={styles.titleArea}>
+          <div className="w-full flex flex-col items-center">
+            <AnimatedContainer className="sticky top-35 z-1 w-full flex flex-col gap-4 pb-10 max-tablet:relative max-tablet:top-0">
               <AnimatedItem>
                 <h1 className="heading-1">404 — Page Not Found!</h1>
               </AnimatedItem>
               <AnimatedItem>
-                <p className="text-16" style={{ maxWidth: 520 }}>
+                <p className="text-16 max-w-130">
                   It seems like you&apos;ve stumbled upon a page that doesn&apos;t exist.
                 </p>
               </AnimatedItem>
             </AnimatedContainer>
 
             <AnimatedItem>
-              <div className={styles.buttonRow}>
+              <div className="w-full flex gap-2 items-end">
                 <Link href="/" className="primary-button btn-16-semibold">
                   Back to Home
                 </Link>
               </div>
             </AnimatedItem>
 
-            <div style={{ paddingTop: 146 }}>
-              <div style={{ height: '40vh', opacity: 0 }} />
+            <div className="pt-36.5">
+              <div className="h-[40vh] opacity-0" />
             </div>
           </div>
         }

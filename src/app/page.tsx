@@ -9,7 +9,6 @@ import ContactButtons from '../components/ContactButtons';
 import Footer from '../components/Footer';
 import { AnimatedContainer, AnimatedItem } from '../components/AnimatedPage';
 import { projects, services, images } from '../data/projects';
-import styles from './Home.module.css';
 
 
 export default function Home() {
@@ -27,19 +26,19 @@ export default function Home() {
 
 function HomeLeft() {
   return (
-    <AnimatedContainer style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <AnimatedContainer className="w-full h-full flex flex-col justify-between">
       <AnimatedItem>
-        <div className={styles.intro}>
+        <div className="flex flex-col gap-4 w-full">
           <h1 className="heading-1">Hello! I&apos;m Maelle.</h1>
         </div>
       </AnimatedItem>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div className="flex flex-col gap-2">
         <AnimatedItem>
           <SocialIcons direction="vertical" />
         </AnimatedItem>
         <AnimatedItem>
-          <div className={styles.servicesList}>
+          <div className="flex flex-col gap-2 w-full">
             {services.map((s) => (
               <MiscRow key={s.title} label={s.title} hasLine={s.hasLine} />
             ))}
@@ -52,32 +51,32 @@ function HomeLeft() {
 
 function HomeMiddle() {
   return (
-    <div className={styles.middleContent}>
-      <AnimatedContainer className={styles.description}>
+    <div className="w-full flex flex-col gap-30 items-center">
+      <AnimatedContainer className="w-full flex flex-col gap-6">
         <AnimatedItem>
-          <p className="heading-2" style={{ maxWidth: 600 }}>
+          <p className="heading-2 max-w-150">
             A digital designer &amp; photographer with 12 years of experience — specializing in crafting visual experiences that feel intentional, refined, and human.
           </p>
         </AnimatedItem>
-        <div className={styles.spacer30vh} />
+        <div className="h-[30vh]" />
         <AnimatedItem>
-          <div className={styles.selectedWorkHeader}>
-            <span className="heading-3" style={{ flex: 1 }}>Selected work</span>
+          <div className="w-full flex items-center gap-4 pb-4 z-1">
+            <span className="heading-3 flex-1">Selected work</span>
             <span className="text-12">({projects.length})</span>
           </div>
         </AnimatedItem>
       </AnimatedContainer>
 
-      <div className={styles.projectsContainer}>
-        <div className={styles.projectsList}>
+      <div className="w-full flex flex-col">
+        <div className="flex flex-col gap-4 w-full">
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </div>
 
-      <div className={styles.bottomSpacer}>
-        <div className={styles.spacer40vh} />
+      <div className="w-full">
+        <div className="h-[40vh]" />
       </div>
     </div>
   );
@@ -85,20 +84,20 @@ function HomeMiddle() {
 
 function HomeRight() {
   return (
-    <AnimatedContainer style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 32, width: '100%' }}>
+    <AnimatedContainer className="w-full h-full flex flex-col justify-between">
+      <div className="flex flex-col gap-8 w-full">
         <AnimatedItem>
-          <div className={styles.available}>
+          <div className="flex gap-2 items-center w-full">
             <span className="diamond diamond-md" />
             <span className="text-14">Available for work</span>
           </div>
         </AnimatedItem>
         <AnimatedItem>
-          <div className={styles.profile}>
-            <div className={styles.profileImage}>
+          <div className="flex gap-4 items-start w-full">
+            <div className="shrink-0 w-20 h-20 overflow-hidden rounded-sm [&_img]:w-full [&_img]:h-full [&_img]:object-cover">
               <Image src={images.profileHome} alt="Maelle" width={400} height={400} />
             </div>
-            <div className={styles.profileInfo}>
+            <div className="flex flex-col gap-1">
               <span className="text-14">Digital Designer</span>
               <span className="text-14">Based in France</span>
               <span className="text-14">Since 2013</span>
@@ -108,7 +107,7 @@ function HomeRight() {
       </div>
 
       <AnimatedItem>
-        <div className={styles.contactRow}>
+        <div className="w-full flex gap-2 items-end">
           <ContactButtons />
           <span className="text-14">© 2025</span>
         </div>

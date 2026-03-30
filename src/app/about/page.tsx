@@ -15,7 +15,6 @@ import Footer from '../../components/Footer';
 import { AnimatedContainer, AnimatedItem } from '../../components/AnimatedPage';
 import { images, serviceDetails, tools, experience, stats, awards, faqs } from '../../data/projects';
 import { DownloadSimple } from '@phosphor-icons/react';
-import styles from './About.module.css';
 
 export default function About() {
   return (
@@ -32,7 +31,7 @@ export default function About() {
 
 function AboutLeft() {
   return (
-    <AnimatedContainer style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <AnimatedContainer className="w-full h-full flex flex-col justify-between">
       {/* Top */}
       <AnimatedItem>
         <h1 className="heading-1">About Me.</h1>
@@ -40,8 +39,8 @@ function AboutLeft() {
 
       {/* Middle — Profile photo */}
       <AnimatedItem>
-        <div className={styles.leftPhoto}>
-          <div className={styles.leftProfileImg}>
+        <div className="flex flex-col gap-2 w-[55%]">
+          <div className="w-full h-53.25 overflow-hidden [&_img]:w-full [&_img]:h-full [&_img]:object-cover">
             <Image src={images.profileAbout} alt="Maelle" width={400} height={400} />
           </div>
           <span className="text-14">© 2013-25</span>
@@ -50,7 +49,7 @@ function AboutLeft() {
 
       {/* Bottom — Contact + Socials */}
       <AnimatedItem>
-        <div className={styles.leftBottom}>
+        <div className="flex gap-2 items-end w-full">
           <ContactButtons />
           <SocialIcons direction="horizontal" />
         </div>
@@ -61,35 +60,35 @@ function AboutLeft() {
 
 function AboutMiddle() {
   return (
-    <div className={styles.middleContent}>
+    <div className="w-full flex flex-col gap-30 items-center max-tablet:gap-20 max-phone:gap-15">
       {/* Section 1 — Intro */}
-      <AnimatedContainer className={styles.section}>
+      <AnimatedContainer className="w-full flex flex-col gap-4">
         <AnimatedItem>
-          <p className="heading-2" style={{ maxWidth: 600 }}>
+          <p className="heading-2 max-w-150">
             I&apos;m Maelle — a digital designer and photographer based in France, with over 12 years of experience crafting visual stories across digital, editorial, and lifestyle spaces.
           </p>
         </AnimatedItem>
         <AnimatedItem>
-          <p className="text-16" style={{ maxWidth: 520 }}>
+          <p className="text-16 max-w-130">
             Whether I&apos;m designing a brand&apos;s digital presence or capturing quiet moments on camera, I approach every project with care, intention, and a strong sense of visual narrative.
           </p>
         </AnimatedItem>
       </AnimatedContainer>
 
       {/* Section 2 — Logos Ticker */}
-      <AnimatedItem className={styles.section} style={{ width: '100%' }}>
+      <AnimatedItem className="w-full">
         <LogosTicker />
       </AnimatedItem>
 
       {/* Section 3 — Services */}
-      <AnimatedContainer className={styles.section}>
+      <AnimatedContainer className="w-full flex flex-col gap-4">
         <AnimatedItem>
-          <div className={styles.sectionTitle}>
+          <div className="w-full flex flex-col gap-4 pb-4 z-1">
             <h2 className="heading-2">Services</h2>
             <div className="divider" />
           </div>
         </AnimatedItem>
-        <div className={styles.serviceCards}>
+        <div className="flex flex-col gap-4 w-full">
           {serviceDetails.map((s) => (
             <AnimatedItem key={s.title}>
               <ServiceCard title={s.title} description={s.description} />
@@ -99,12 +98,12 @@ function AboutMiddle() {
       </AnimatedContainer>
 
       {/* Section 4 — Software Stack */}
-      <AnimatedContainer className={styles.section}>
+      <AnimatedContainer className="w-full flex flex-col gap-4">
         <AnimatedItem>
           <h2 className="heading-2">Software Stack</h2>
         </AnimatedItem>
         <AnimatedItem>
-          <div className={styles.toolsGrid}>
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-2 w-full max-phone:grid-cols-1">
             {tools.map((t) => (
               <ToolsCard key={t.name} name={t.name} description={t.description} />
             ))}
@@ -113,12 +112,12 @@ function AboutMiddle() {
       </AnimatedContainer>
 
       {/* Section 5 — Experience */}
-      <AnimatedContainer className={styles.section}>
+      <AnimatedContainer className="w-full flex flex-col gap-4">
         <AnimatedItem>
-          <div className={styles.sectionTitle}>
-            <div className={styles.experienceHeader}>
-              <h2 className="heading-2" style={{ flex: 1 }}>Experience</h2>
-              <a href="#" className={`primary-button btn-14-medium ${styles.downloadCv}`}>
+          <div className="w-full flex flex-col gap-4 pb-4 z-1">
+            <div className="flex gap-2 items-end w-full">
+              <h2 className="heading-2 flex-1">Experience</h2>
+              <a href="#" className="primary-button btn-14-medium inline-flex gap-1 items-center whitespace-nowrap">
                 <DownloadSimple size={14} weight="regular" />
                 <span>Download CV</span>
               </a>
@@ -126,7 +125,7 @@ function AboutMiddle() {
             <div className="divider" />
           </div>
         </AnimatedItem>
-        <div className={styles.experienceCards}>
+        <div className="flex flex-col gap-4 w-full">
           {experience.map((e) => (
             <AnimatedItem key={e.title}>
               <ExperienceCard
@@ -141,9 +140,9 @@ function AboutMiddle() {
       </AnimatedContainer>
 
       {/* Section 6 — FAQs */}
-      <AnimatedContainer className={styles.section}>
+      <AnimatedContainer className="w-full flex flex-col gap-4">
         <AnimatedItem>
-          <div className={styles.sectionTitle}>
+          <div className="w-full flex flex-col gap-4 pb-4 z-1">
             <h2 className="heading-2">FAQs</h2>
             <div className="divider" />
           </div>
@@ -154,8 +153,8 @@ function AboutMiddle() {
       </AnimatedContainer>
 
       {/* Bottom spacer */}
-      <div style={{ paddingTop: 146 }}>
-        <div style={{ height: '40vh', opacity: 0 }} />
+      <div className="pt-36.5">
+        <div className="h-[40vh] opacity-0" />
       </div>
     </div>
   );
@@ -163,10 +162,10 @@ function AboutMiddle() {
 
 function AboutRight() {
   return (
-    <AnimatedContainer style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <AnimatedContainer className="w-full h-full flex flex-col justify-between">
       {/* Stats */}
       <AnimatedItem>
-        <div className={styles.statsBlock}>
+        <div className="flex flex-col gap-1 w-full">
           {stats.map((s) => (
             <MiscRow key={s.label} label={s.label} value={s.value} />
           ))}
@@ -175,12 +174,12 @@ function AboutRight() {
 
       {/* Awards */}
       <AnimatedItem>
-        <div className={styles.awardsBlock}>
-          <div className={styles.awardsTitle}>
+        <div className="flex flex-col gap-4 w-full">
+          <div className="flex flex-col gap-0.5 w-full">
             <span className="text-14">Achievements</span>
             <div className="divider" />
           </div>
-          <div className={styles.awardsList}>
+          <div className="flex flex-col gap-1.5 w-full">
             {awards.map((a) => (
               <AwardRow key={a.title} title={a.title} org={a.org} year={a.year} hasLine={a.hasLine} />
             ))}
