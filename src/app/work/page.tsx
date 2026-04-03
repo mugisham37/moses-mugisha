@@ -1,63 +1,62 @@
-'use client';
+import { projects } from "@/data/work";
+import { ProjectCard } from "@/components/ProjectCard";
 
-import { useState, useMemo } from 'react';
-import ThreeColumnLayout from '../../components/ThreeColumnLayout';
-import ProjectCard from '../../components/ProjectCard';
-import Footer from '../../components/Footer';
-import { AnimatedContainer, AnimatedItem } from '../../components/AnimatedPage';
-import { projects } from '../../data/projects';
-
-export default function Work() {
-  const [activeCategory, setActiveCategory] = useState('All');
-
-  const categories = useMemo(() => {
-    const cats = new Set(projects.map(p => p.category));
-    return ['All', ...Array.from(cats)];
-  }, []);
-
-  const filtered = activeCategory === 'All'
-    ? projects
-    : projects.filter(p => p.category === activeCategory);
-
+export default function WorkPage() {
   return (
-    <>
-      <ThreeColumnLayout
-        left={<div />}
-        middle={
-          <div className="w-full flex flex-col items-center">
-            <AnimatedContainer className="sticky top-35 z-1 w-full flex flex-col gap-6 pb-10 bg-white max-tablet:relative max-tablet:top-0">
-              <AnimatedItem>
-                <h1 className="heading-1">My Work.</h1>
-              </AnimatedItem>
-              <AnimatedItem>
-                <div className="flex gap-1.5 flex-wrap">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat}
-                      className={`btn-14-medium py-1 cursor-pointer transition-colors duration-200 ${activeCategory === cat ? 'text-ink underline underline-offset-[3px]' : 'text-slate hover:text-ink'}`}
-                      onClick={() => setActiveCategory(cat)}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-              </AnimatedItem>
-            </AnimatedContainer>
+    <div className="w-full max-w-[1200px] mx-auto">
+      <div className="flex flex-col lg:flex-row gap-[32px] px-[20px]">
 
-            <div className="grid grid-cols-2 gap-3 w-full pb-[50px] z-2 bg-white max-phone:grid-cols-1">
-              {filtered.map((project) => (
-                <ProjectCard key={project.slug} project={project} />
-              ))}
-            </div>
+        {/* LEFT SIDEBAR — empty on work page */}
+        <aside className="lg:w-1/4 lg:sticky lg:top-0 lg:h-screen pt-[140px] pb-[8px] z-[3] hidden lg:block" aria-hidden="true" />
 
-            <div className="pt-36.5">
-              <div className="h-[40vh] opacity-0" />
+        {/* MIDDLE COLUMN */}
+        <div className="flex-1 border-x border-[var(--framer-light-gray)] flex flex-col pt-[140px] px-[16px]">
+
+          {/* Title + Categories header — sticky */}
+          <div className="lg:sticky lg:top-[140px] z-[1] w-full flex flex-col lg:flex-row items-start gap-[24px] pb-[40px]">
+            <h1 className="flex-1 text-[56px] leading-[1em] tracking-[-0.05em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
+              My Work.
+            </h1>
+            {/* Category pills */}
+            <div className="flex flex-wrap gap-[6px]">
+              <span className="text-[14px] leading-[1em] tracking-[-0.03em] font-medium font-[family-name:var(--font-inter-var)] text-[var(--framer-black)] cursor-pointer">
+                All
+              </span>
+              <span className="text-[14px] leading-[1em] tracking-[-0.03em] font-medium font-[family-name:var(--font-inter-var)] text-[var(--framer-gray)] cursor-pointer hover:text-[var(--framer-black)] transition-colors">
+                Photography
+              </span>
+              <span className="text-[14px] leading-[1em] tracking-[-0.03em] font-medium font-[family-name:var(--font-inter-var)] text-[var(--framer-gray)] cursor-pointer hover:text-[var(--framer-black)] transition-colors">
+                Web design
+              </span>
+              <span className="text-[14px] leading-[1em] tracking-[-0.03em] font-medium font-[family-name:var(--font-inter-var)] text-[var(--framer-gray)] cursor-pointer hover:text-[var(--framer-black)] transition-colors">
+                Visual Identity
+              </span>
             </div>
           </div>
-        }
-        right={<div />}
-      />
-      <Footer />
-    </>
+
+          {/* 2-column project grid */}
+          <div className="w-full z-[2] grid grid-cols-1 md:grid-cols-2 gap-[12px] pb-[50px] bg-[var(--framer-white)]">
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.slug}
+                title={project.title}
+                category={project.briefDescription}
+                year={project.year}
+                href={`/work/${project.slug}`}
+                imageSrc={project.previewImage}
+              />
+            ))}
+          </div>
+
+          {/* Bottom spacer */}
+          <div className="w-full pt-[146px]">
+            <div className="w-full h-[40vh] opacity-0 pointer-events-none" />
+          </div>
+        </div>
+
+        {/* RIGHT SIDEBAR — empty on work page */}
+        <aside className="lg:w-1/4 lg:sticky lg:top-0 lg:h-screen pt-[140px] pb-[8px] z-[3] hidden lg:block" aria-hidden="true" />
+      </div>
+    </div>
   );
 }

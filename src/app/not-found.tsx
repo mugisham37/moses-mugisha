@@ -1,44 +1,34 @@
-'use client';
-
-import Link from 'next/link';
-import ThreeColumnLayout from '../components/ThreeColumnLayout';
-import Footer from '../components/Footer';
-import { AnimatedContainer, AnimatedItem } from '../components/AnimatedPage';
+import Link from "next/link"
 
 export default function NotFound() {
   return (
-    <>
-      <ThreeColumnLayout
-        left={<div />}
-        middle={
-          <div className="w-full flex flex-col items-center">
-            <AnimatedContainer className="sticky top-35 z-1 w-full flex flex-col gap-4 pb-10 max-tablet:relative max-tablet:top-0">
-              <AnimatedItem>
-                <h1 className="heading-1">404 — Page Not Found!</h1>
-              </AnimatedItem>
-              <AnimatedItem>
-                <p className="text-16 max-w-130">
-                  It seems like you&apos;ve stumbled upon a page that doesn&apos;t exist.
-                </p>
-              </AnimatedItem>
-            </AnimatedContainer>
+    <div className="w-full max-w-[1200px] mx-auto">
+      <div className="flex flex-col lg:flex-row gap-[32px] px-[20px]">
+        {/* LEFT SIDEBAR — empty */}
+        <aside className="lg:w-1/4 hidden lg:block" aria-hidden="true" />
 
-            <AnimatedItem>
-              <div className="w-full flex gap-2 items-end">
-                <Link href="/" className="primary-button btn-16-semibold">
-                  Back to Home
-                </Link>
-              </div>
-            </AnimatedItem>
+        {/* MIDDLE */}
+        <div className="flex-1 border-x border-[var(--framer-light-gray)] flex flex-col items-start justify-center min-h-[80vh] px-[16px] py-[140px] gap-[24px]">
+          <p className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-gray)] font-[family-name:var(--font-geist)]">
+            404
+          </p>
+          <h1 className="text-[56px] leading-[1em] tracking-[-0.05em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
+            Page not found.
+          </h1>
+          <p className="max-w-[520px] text-[16px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
+            The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          </p>
+          <Link
+            href="/"
+            className="text-[14px] leading-[1em] tracking-[-0.03em] font-semibold font-[family-name:var(--font-inter-var)] text-[var(--framer-black)] hover:opacity-70 transition-opacity"
+          >
+            ← Back to home
+          </Link>
+        </div>
 
-            <div className="pt-36.5">
-              <div className="h-[40vh] opacity-0" />
-            </div>
-          </div>
-        }
-        right={<div />}
-      />
-      <Footer />
-    </>
-  );
+        {/* RIGHT SIDEBAR — empty */}
+        <aside className="lg:w-1/4 hidden lg:block" aria-hidden="true" />
+      </div>
+    </div>
+  )
 }

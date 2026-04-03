@@ -1,123 +1,139 @@
-'use client';
+import Image from "next/image"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import { projects, getProjectBySlug } from "@/data/work"
+import { PrimaryButton } from "@/components/PrimaryButton"
 
-import { useParams } from 'next/navigation';
-import Link from 'next/link';
-import ThreeColumnLayout from '../../../components/ThreeColumnLayout';
-import ProjectCard from '../../../components/ProjectCard';
-import Footer from '../../../components/Footer';
-import { AnimatedContainer, AnimatedItem } from '../../../components/AnimatedPage';
-import { projects } from '../../../data/projects';
+export async function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }))
+}
 
-export default function WorkDetail() {
-  const params = useParams();
-  const slug = params.slug as string;
-  const project = projects.find(p => p.slug === slug);
-  const currentIndex = projects.findIndex(p => p.slug === slug);
-  const nextProject = projects[(currentIndex + 1) % projects.length];
+export default async function WorkDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const project = getProjectBySlug(slug)
+  if (!project) notFound()
 
-  if (!project) {
-    return (
-      <div className="px-5 py-50 text-center">
-        <h1 className="heading-1">Project Not Found</h1>
-        <Link href="/work" className="primary-button btn-16-semibold mt-5 inline-block">
-          Back to Work
-        </Link>
-      </div>
-    );
-  }
+  // Find next project for navigation
+  const currentIndex = projects.findIndex((p) => p.slug === slug)
+  const nextProject = projects[(currentIndex + 1) % projects.length]
 
   return (
-    <>
-      <ThreeColumnLayout
-        left={
-          <AnimatedContainer className="w-full h-full flex flex-col justify-between">
-            {/* Top — Title */}
-            <AnimatedItem>
-              <h1 className="heading-1">{project.title}</h1>
-            </AnimatedItem>
+    <div className="w-full max-w-[1200px] mx-auto">
+      <div className="flex flex-col lg:flex-row gap-[32px] px-[20px]">
 
-            {/* Middle — Cover + Category */}
-            <AnimatedItem>
-              <div className="flex flex-col gap-2 w-[60%]">
-                <div className="w-full h-30 overflow-hidden [&_img]:w-full [&_img]:h-full [&_img]:object-cover">
-                  <img src={project.image} alt={project.title} />
-                </div>
-                <span className="text-14">{project.category}</span>
-              </div>
-            </AnimatedItem>
+        {/* LEFT SIDEBAR */}
+        <aside className="lg:w-1/4 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-between gap-[8px] pt-[140px] pb-[8px] z-[3] overflow-visible">
+          {/* Title */}
+          <div className="overflow-hidden flex flex-col gap-[24px]">
+            <h1 className="text-[56px] leading-[1em] tracking-[-0.05em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
+              {project.title}
+            </h1>
+          </div>
 
-            {/* Bottom — Metadata */}
-            <AnimatedItem>
-              <div className="flex flex-col gap-1 w-full">
-                <div className="flex flex-col gap-1">
-                  <div className="flex gap-2 items-end">
-                    <span className="text-14 text-right">Year</span>
-                    <span className="text-16 flex-1">{project.year}</span>
-                  </div>
-                  <div className="divider" />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <div className="flex gap-2 items-end">
-                    <span className="text-14 text-right">Client</span>
-                    <span className="text-16 flex-1">{project.client}</span>
-                  </div>
-                  <div className="divider" />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <div className="flex gap-2 items-end">
-                    <span className="text-14 text-right">Service</span>
-                    <span className="text-16 flex-1">{project.service}</span>
-                  </div>
-                </div>
-              </div>
-            </AnimatedItem>
-          </AnimatedContainer>
-        }
-        middle={
-          <div className="w-full flex flex-col items-center">
-            {/* Sticky description */}
-            <AnimatedContainer className="sticky top-40 z-1 w-full flex flex-col gap-2 pb-2 max-tablet:relative max-tablet:top-0">
-              <AnimatedItem>
-                <p className="heading-2 max-w-150">{project.description}</p>
-              </AnimatedItem>
-              <div className="h-[30vh] opacity-0" />
-              <AnimatedItem>
-                <span className="text-12">©</span>
-              </AnimatedItem>
-            </AnimatedContainer>
-
-            {/* Image gallery */}
-            <div className="relative z-2 bg-white w-full flex flex-col gap-3 pb-4">
-              {project.galleryImages.length > 0 ? (
-                project.galleryImages.map((img, i) => (
-                  <div key={i} className="w-full overflow-hidden [&_img]:w-full [&_img]:h-auto [&_img]:block">
-                    <img src={img} alt={`${project.title} ${i + 1}`} />
-                  </div>
-                ))
-              ) : (
-                <div className="w-full overflow-hidden [&_img]:w-full [&_img]:h-auto [&_img]:block">
-                  <img src={project.image} alt={project.title} />
-                </div>
-              )}
+          {/* Small preview image */}
+          <div className="w-[60%] flex flex-col gap-[8px] overflow-visible">
+            <div className="relative w-full" style={{ height: "120px", aspectRatio: "1.333" }}>
+              <Image
+                src={project.previewImage}
+                alt={project.title}
+                fill
+                className="object-cover"
+              />
             </div>
+            <span className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
+              {project.briefDescription}
+            </span>
+          </div>
 
-            <div className="pt-36.5">
-              <div className="h-[40vh] opacity-0" />
+          {/* Project meta info */}
+          <div className="w-full flex flex-col gap-[4px] overflow-hidden">
+            {/* Year */}
+            <div className="w-full flex flex-col gap-[4px] overflow-hidden">
+              <div className="w-full flex flex-row items-end justify-between gap-[8px]">
+                <span className="text-[16px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">{project.year}</span>
+                <span className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)] flex-shrink-0">Year</span>
+              </div>
+              <div className="w-full h-[1px] bg-[var(--framer-light-gray)]" />
+            </div>
+            {/* Client */}
+            <div className="w-full flex flex-col gap-[4px] overflow-hidden">
+              <div className="w-full flex flex-row items-end justify-between gap-[8px]">
+                <span className="text-[16px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">{project.client}</span>
+                <span className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)] flex-shrink-0">Client</span>
+              </div>
+              <div className="w-full h-[1px] bg-[var(--framer-light-gray)]" />
+            </div>
+            {/* Service */}
+            <div className="w-full flex flex-col gap-[4px] overflow-hidden">
+              <div className="w-full flex flex-row items-end justify-between gap-[8px]">
+                <span className="text-[16px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">{project.service}</span>
+                <span className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)] flex-shrink-0">Service</span>
+              </div>
             </div>
           </div>
-        }
-        right={
-          <AnimatedContainer className="w-full h-full flex flex-col justify-end">
-            <AnimatedItem>
-              <div className="flex flex-col w-full">
-                <span className="text-12 mb-2">Next Project</span>
-                <ProjectCard project={nextProject} />
+        </aside>
+
+        {/* MIDDLE COLUMN */}
+        <div className="flex-1 border-x border-[var(--framer-light-gray)] flex flex-col pt-[140px] px-[16px]">
+
+          {/* Sticky description */}
+          <div className="lg:sticky lg:top-[160px] z-[1] w-full flex flex-col gap-[8px] pb-[8px]">
+            <p className="w-full max-w-[600px] text-[26px] leading-[1.1em] tracking-[-0.04em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
+              {project.overview}
+            </p>
+            <div className="w-full h-[30vh] opacity-0 pointer-events-none" />
+            {/* Copyright */}
+            <span className="text-[12px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">©</span>
+          </div>
+
+          {/* Image gallery */}
+          <div className="w-full z-[2] flex flex-col gap-[12px] pb-[16px] bg-[var(--framer-white)]">
+            {project.gallery.map((img, i) => (
+              <div key={i} className="w-full relative" style={{ height: "500px" }}>
+                <Image src={img} alt={`${project.title} gallery ${i + 1}`} fill className="object-cover" />
               </div>
-            </AnimatedItem>
-          </AnimatedContainer>
-        }
-      />
-      <Footer />
-    </>
-  );
+            ))}
+          </div>
+
+          {/* Project detail text */}
+          <div className="w-full flex flex-col gap-[40px] py-[40px]">
+            {project.title1 && (
+              <div className="flex flex-col gap-[16px]">
+                <h2 className="text-[26px] leading-[1.1em] tracking-[-0.04em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">{project.title1}</h2>
+                <p className="text-[16px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)] max-w-[600px]">{project.paragraph1}</p>
+              </div>
+            )}
+            {project.title2 && (
+              <div className="flex flex-col gap-[16px]">
+                <h2 className="text-[26px] leading-[1.1em] tracking-[-0.04em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">{project.title2}</h2>
+                <p className="text-[16px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)] max-w-[600px]">{project.paragraph2}</p>
+              </div>
+            )}
+          </div>
+
+          {/* Bottom spacer */}
+          <div className="w-full pt-[146px]">
+            <div className="w-full h-[40vh] opacity-0 pointer-events-none" />
+          </div>
+        </div>
+
+        {/* RIGHT SIDEBAR */}
+        <aside className="lg:w-1/4 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-between items-center gap-[8px] pt-[140px] pb-[8px] z-[3] overflow-visible">
+          <div className="w-full" />
+          {/* Next project */}
+          <div className="w-full flex flex-row items-center justify-end gap-[8px] overflow-hidden">
+            <div className="w-full flex flex-col gap-[6px] bg-[var(--framer-white)] overflow-hidden">
+              <p className="text-[12px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-gray)] font-[family-name:var(--font-geist)]">Next</p>
+              <Link
+                href={`/work/${nextProject.slug}`}
+                className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)] hover:opacity-70 transition-opacity"
+              >
+                {nextProject.title}
+              </Link>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  )
 }

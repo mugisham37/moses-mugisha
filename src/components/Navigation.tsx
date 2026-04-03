@@ -1,129 +1,222 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState, useEffect, useRef, useTransition } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { List, X } from '@phosphor-icons/react';
-import { images } from '../data/projects';
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
-export default function Navigation() {
-  const pathname = usePathname();
-  const [time, setTime] = useState(new Date());
+interface NavigationProps {
+  className?: string;
+}
+
+export function Navigation({ className }: NavigationProps) {
+  const [time, setTime] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const menuOpenRef = useRef(false);
-  const [, startTransition] = useTransition();
-
   useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 60000);
-    return () => clearInterval(interval);
+    const update = () => {
+      const now = new Date();
+      const dateStr = now.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      });
+      const timeStr = now.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+      setTime(`${dateStr}, ${timeStr}`);
+    };
+    update();
+    const id = setInterval(update, 60000);
+    return () => clearInterval(id);
   }, []);
 
-  useEffect(() => {
-    menuOpenRef.current = menuOpen;
-  }, [menuOpen]);
-
-  useEffect(() => {
-    if (menuOpenRef.current) {
-      startTransition(() => {
-        setMenuOpen(false);
-      });
-    }
-  }, [pathname]);
-
-  const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  const timeStr = time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-
-  const navLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'Info', path: '/about' },
-    { label: 'Work', path: '/work' },
-    { label: 'Contact', path: '/contact' },
-  ];
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-100 bg-white">
-      <div className="flex items-center gap-8 px-5 py-3 max-w-[1200px] mx-auto max-tablet:max-w-[810px] max-phone:max-w-[390px]">
-        {/* Logo — 25% */}
-        <div className="w-1/4 shrink-0 flex items-center max-tablet:w-auto">
-          <Link href="/" className="inline-flex items-center gap-1.5 rounded-[30px]">
-            <Image src={images.logo} alt="Maelle" className="h-4.5 w-auto" width={40} height={18} />
-          </Link>
-        </div>
-
-        {/* Desktop Links — flex 1 */}
-        <div className="flex-1 flex gap-1 items-center pl-4 max-phone:hidden">
-          {navLinks.map((link, i) => (
-            <Link
-              key={link.path}
-              href={link.path}
-              className="whitespace-nowrap btn-14-semibold primary-button"
-            >
-              {link.label}{i < navLinks.length - 1 ? ',' : ''}
-            </Link>
-          ))}
-        </div>
-
-        {/* Date/Time + CTA — 25% desktop */}
-        <div className="w-1/4 shrink-0 flex items-center justify-center gap-2 max-tablet:w-auto max-tablet:flex-1 max-tablet:justify-end max-phone:hidden">
-          <div className="flex-1 flex justify-start items-center max-tablet:hidden">
-            <span className="text-[14px] leading-[1.4] tracking-[-0.03em] text-slate whitespace-nowrap">{dateStr}, {timeStr}</span>
-          </div>
-          <a
-            href="https://cal.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="primary-button btn-14-medium"
-          >
-            Book a Call
-          </a>
-        </div>
-
-        {/* Mobile menu toggle */}
-        <button
-          className="hidden max-phone:flex max-phone:ml-auto p-1"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
-        </button>
-      </div>
-
-      {/* 1px bottom border */}
-      <div className="divider" />
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="overflow-hidden flex flex-col px-5 pb-4 pt-2 gap-3 bg-white"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className="block py-2 text-ink btn-14-semibold"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <a
-              href="https://cal.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block py-2 text-ink btn-14-medium"
-            >
-              Book a Call
-            </a>
-          </motion.div>
+    <>
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-[100] bg-[var(--framer-white)]",
+          className
         )}
-      </AnimatePresence>
-    </nav>
+      >
+        <div className="max-w-[1200px] mx-auto flex flex-row items-center gap-[32px] px-[20px] py-[12px] relative">
+          {/* Bottom border */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-[var(--framer-light-gray)]" />
+
+          {/* Logo — left column */}
+          <div className="w-1/4 flex items-center">
+            <Link href="/">
+              <Image
+                src="/images/logo.svg"
+                alt="Maelle"
+                width={24}
+                height={24}
+              />
+            </Link>
+          </div>
+
+          {/* Nav links — center column, desktop only */}
+          <nav className="flex-1 hidden lg:flex flex-row items-center gap-[4px] pl-[16px]">
+            <Link
+              href="/"
+              className="text-[14px] leading-[1em] tracking-[-0.03em] font-semibold font-[family-name:var(--font-inter-var)] text-[var(--framer-black)] hover:opacity-70 transition-opacity"
+            >
+              Home,
+            </Link>
+            <Link
+              href="/about"
+              className="text-[14px] leading-[1em] tracking-[-0.03em] font-semibold font-[family-name:var(--font-inter-var)] text-[var(--framer-black)] hover:opacity-70 transition-opacity"
+            >
+              Info,
+            </Link>
+            <Link
+              href="/work"
+              className="text-[14px] leading-[1em] tracking-[-0.03em] font-semibold font-[family-name:var(--font-inter-var)] text-[var(--framer-black)] hover:opacity-70 transition-opacity"
+            >
+              Work,
+            </Link>
+            <Link
+              href="/contact"
+              className="text-[14px] leading-[1em] tracking-[-0.03em] font-semibold font-[family-name:var(--font-inter-var)] text-[var(--framer-black)] hover:opacity-70 transition-opacity"
+            >
+              Contact
+            </Link>
+          </nav>
+
+          {/* Right column */}
+          <div className="w-1/4 flex items-center justify-end gap-[8px]">
+            {/* Desktop: time + book a call */}
+            <div className="hidden lg:flex items-center gap-[8px]">
+              {time && (
+                <span className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-gray)] font-[family-name:var(--font-geist)]">
+                  {time}
+                </span>
+              )}
+              <a
+                href="https://cal.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[14px] leading-[1em] tracking-[-0.03em] font-semibold font-[family-name:var(--font-inter-var)] text-[var(--framer-black)] hover:opacity-70 transition-opacity"
+              >
+                Book a Call
+              </a>
+            </div>
+
+            {/* Mobile: hamburger toggle */}
+            <button
+              className="flex lg:hidden items-center justify-center w-[36px] h-[36px]"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+            >
+              {menuOpen ? (
+                /* Close (X) icon */
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="2"
+                    y1="2"
+                    x2="16"
+                    y2="16"
+                    stroke="var(--framer-black)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="16"
+                    y1="2"
+                    x2="2"
+                    y2="16"
+                    stroke="var(--framer-black)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              ) : (
+                /* Hamburger icon */
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="2"
+                    y1="4.5"
+                    x2="16"
+                    y2="4.5"
+                    stroke="var(--framer-black)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="2"
+                    y1="9"
+                    x2="16"
+                    y2="9"
+                    stroke="var(--framer-black)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="2"
+                    y1="13.5"
+                    x2="16"
+                    y2="13.5"
+                    stroke="var(--framer-black)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile full-screen overlay menu */}
+      {menuOpen && (
+        <div className="fixed inset-0 bg-[var(--framer-white)] z-[99] flex flex-col pt-[80px] px-[20px] gap-[24px] lg:hidden">
+          <nav className="flex flex-col gap-[8px]">
+            <Link
+              href="/"
+              className="text-[40px] leading-[1em] tracking-[-0.05em] font-[500] font-[family-name:var(--font-geist)] text-[var(--framer-black)]"
+              onClick={() => setMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              className="text-[40px] leading-[1em] tracking-[-0.05em] font-[500] font-[family-name:var(--font-geist)] text-[var(--framer-black)]"
+              onClick={() => setMenuOpen(false)}
+            >
+              Info
+            </Link>
+            <Link
+              href="/work"
+              className="text-[40px] leading-[1em] tracking-[-0.05em] font-[500] font-[family-name:var(--font-geist)] text-[var(--framer-black)]"
+              onClick={() => setMenuOpen(false)}
+            >
+              Work
+            </Link>
+            <Link
+              href="/contact"
+              className="text-[40px] leading-[1em] tracking-[-0.05em] font-[500] font-[family-name:var(--font-geist)] text-[var(--framer-black)]"
+              onClick={() => setMenuOpen(false)}
+            >
+              Contact
+            </Link>
+          </nav>
+        </div>
+      )}
+    </>
   );
 }
+
+export default Navigation;

@@ -1,35 +1,58 @@
-'use client';
+import Image from "next/image";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import type { Project } from '../data/projects';
-
-interface Props {
-  project: Project;
+interface ProjectCardProps {
+  title: string;
+  category: string;
+  year: string;
+  href: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  className?: string;
 }
 
-export default function ProjectCard({ project }: Props) {
+export function ProjectCard({
+  title,
+  category,
+  year,
+  href,
+  imageSrc,
+  imageAlt,
+  className,
+}: ProjectCardProps) {
   return (
-    <Link href={`/work/${project.slug}`} className="flex flex-col gap-1.5 bg-white no-underline">
-      <motion.div className="w-full aspect-4/3 overflow-hidden relative" whileHover="hover">
-        <motion.img
-          src={project.image}
-          alt={project.title}
-          className="-mt-1.75 -mb-1.75 -ml-2.25 -mr-2.25 w-[calc(100%+18px)] h-[calc(100%+14px)] object-cover"
-          variants={{
-            hover: { scale: 1.05 },
-          }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
+    <Link
+      href={href}
+      className={cn(
+        "block w-full overflow-hidden bg-[var(--framer-white)] flex flex-col gap-[6px]",
+        className
+      )}
+    >
+      <div className="w-full h-[387px] aspect-[1.333] overflow-hidden relative">
+        <Image
+          src={imageSrc || "/images/profile-home.jpg"}
+          alt={imageAlt || title}
+          fill
+          className="object-cover scale-[1.02]"
         />
-      </motion.div>
-      <div className="flex gap-2 justify-between items-end">
-        <div className="flex gap-1 items-center flex-1 overflow-hidden">
-          <span className="text-14">{project.title}</span>
-          <span className="diamond diamond-sm" />
-          <span className="text-14 flex-1">{project.category}</span>
+      </div>
+      <div className="w-full flex flex-row items-center justify-between overflow-hidden px-[0px] gap-[8px]">
+        <div className="flex flex-row items-center gap-[4px] flex-1 overflow-hidden">
+          <span className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)] whitespace-nowrap">
+            {title}
+          </span>
+          <div className="w-[3px] h-[4px] bg-[var(--framer-gray)] flex-shrink-0 rotate-[-45deg]" />
+          <span className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
+            {category}
+          </span>
         </div>
-        <span className="text-14">{project.year}</span>
+        <span className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)] flex-shrink-0">
+          {year}
+        </span>
       </div>
     </Link>
   );
 }
+
+export default ProjectCard;

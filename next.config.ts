@@ -5,7 +5,15 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "framerusercontent.com",
+        hostname: "**.framerusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**.framer.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**.framer.website",
       },
     ],
   },
