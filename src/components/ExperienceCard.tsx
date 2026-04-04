@@ -1,40 +1,26 @@
-import { cn } from "@/lib/utils";
-
 interface ExperienceCardProps {
-  role: string;
+  title: string;
   company: string;
-  years: string;
+  period: string;
   description: string;
-  className?: string;
 }
 
-export function ExperienceCard({
-  role,
-  company,
-  years,
-  description,
-  className,
-}: ExperienceCardProps) {
+export function ExperienceCard({ title, company, period, description }: ExperienceCardProps) {
   return (
-    <div
-      className={cn(
-        "w-full flex flex-col gap-[0px] pb-[16px] overflow-visible relative",
-        className
-      )}
-    >
-      <div className="flex flex-col lg:flex-row items-start gap-[24px]">
-        <div className="flex flex-col gap-[2px] flex-shrink-0 lg:w-[40%]">
-          <h3 className="text-[18px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
-            {role}
-          </h3>
-          <p className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
-            {company}
-          </p>
-          <p className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
-            {years}
-          </p>
-        </div>
-        <p className="flex-1 text-[16px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
+    <div className="w-full flex flex-col md:flex-row items-start gap-[16px] md:gap-[24px] pb-[16px] relative">
+      <div className="flex-1 flex flex-col gap-[2px]">
+        <h3 className="text-[18px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)]">
+          {title}
+        </h3>
+        <p className="text-[14px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)]">
+          {company}
+        </p>
+        <p className="text-[14px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)]">
+          {period}
+        </p>
+      </div>
+      <div className="flex-1 flex flex-row items-center gap-[8px]">
+        <p className="text-[16px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)]">
           {description}
         </p>
       </div>

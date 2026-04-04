@@ -1,47 +1,19 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { Inter } from "next/font/google";
-import "./globals.css";
 import { Providers } from "@/components/providers";
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
-
-const geist = Geist({
-  variable: "--font-geist",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
-const inter = Inter({
-  variable: "--font-inter-var",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Maelle — Digital Designer & Photographer",
-  description:
-    "A digital designer & photographer with 12 years of experience — specializing in crafting visual experiences that feel intentional, refined, and human.",
+  description: "A digital designer & photographer with 12 years of experience.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${geist.variable} ${inter.variable} h-full antialiased`}
-      suppressHydrationWarning
-    >
-      <body className="min-h-full flex flex-col bg-[var(--framer-white)] text-[var(--framer-black)]">
-        <Providers smoothScroll defaultTheme="light" enableSystem={false}>
-          <Navigation />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </Providers>
-      </body>
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
+      </head>
+      <body className="min-h-full"><Providers>{children}</Providers></body>
     </html>
   );
 }

@@ -1,52 +1,46 @@
+"use client";
+
 import Link from "next/link";
-import { FooterTicket } from "@/components/FooterTicket";
+import { motion } from "framer-motion";
 
-export function Footer() {
+function LetsTalkTicker() {
+  const items = Array(10).fill("Let's Talk");
   return (
-    <footer className="w-full max-w-[1200px] mx-auto px-[20px]">
-      <div className="flex flex-row gap-[32px] items-stretch">
-        {/* Left spacer — matches sidebar width */}
-        <div className="w-1/4 flex-shrink-0 hidden lg:block" aria-hidden="true" />
-
-        {/* Center column */}
-        <div className="flex-1 border-x border-[var(--framer-light-gray)] flex flex-col pb-[8px]">
-          {/* Spacer */}
-          <div className="h-[20vh]" />
-
-          {/* Footer Ticket */}
-          <FooterTicket text="Let's Talk" href="/contact" />
-
-          {/* Another spacer */}
-          <div className="h-[20vh]" />
-
-          {/* Bottom bar */}
-          <div className="flex flex-row items-center justify-between gap-[8px] px-[16px]">
-            <div className="flex flex-row items-center gap-[2px] overflow-hidden">
-              <span className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
-                Created by
-              </span>
-              <a
-                href="https://thaer.shop"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[14px] leading-[1em] tracking-[-0.03em] font-semibold font-[family-name:var(--font-inter-var)] text-[var(--framer-black)] hover:opacity-70 transition-opacity ml-[4px]"
-              >
-                Thaer
-              </a>
-            </div>
-            <div className="flex flex-row items-center gap-[2px] overflow-hidden">
-              <p className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
-                © 2025 All rights reserved
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Right spacer — matches sidebar width */}
-        <div className="w-1/4 flex-shrink-0 hidden lg:block" aria-hidden="true" />
+    <Link href="/contact" className="block w-full overflow-hidden group">
+      <div className="h-[1px] bg-[var(--framer-light-gray)]" />
+      <div className="relative h-[100px] md:h-[120px] flex items-center overflow-hidden group-hover:bg-[var(--framer-black)] transition-colors duration-300">
+        <motion.div className="flex items-center gap-[20px] whitespace-nowrap" animate={{ x: ["0%", "-50%"] }} transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 15, ease: "linear" } }}>
+          {items.map((t, i) => (
+            <span key={i} className="flex items-center gap-[20px]">
+              <span className="w-[10px] h-[11px] bg-[var(--framer-gray)] group-hover:bg-[var(--framer-white)] transition-colors duration-300 inline-block flex-shrink-0" style={{ transform: "rotate(45deg)" }} />
+              <span className="text-[50px] md:text-[80px] font-medium leading-[1em] tracking-[-0.04em] text-[var(--framer-black)] group-hover:text-[var(--framer-white)] transition-colors duration-300">{t}</span>
+            </span>
+          ))}
+        </motion.div>
       </div>
-    </footer>
+      <div className="h-[1px] bg-[var(--framer-light-gray)]" />
+    </Link>
   );
 }
 
-export default Footer;
+/** Footer that renders INSIDE the middle column content flow */
+export function FooterContent() {
+  return (
+    <div className="w-full">
+      <div className="h-[20vh] opacity-0" />
+      <LetsTalkTicker />
+      <div className="h-[20vh] opacity-0" />
+      <div className="flex flex-col md:flex-row items-center justify-center gap-[8px] px-[16px] pb-[8px]">
+        <div className="flex-1 flex flex-row items-center gap-[2px]">
+          <span className="text-[14px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)]">Created by</span>
+          <a href="https://thaer.shop" target="_blank" rel="noopener noreferrer" className="text-[14px] font-medium leading-[1em] tracking-[-0.03em] text-[var(--framer-black)] underline decoration-[var(--framer-light-gray)] underline-offset-[3px] hover:text-[var(--framer-gray)] transition-colors ml-[4px]">Thaer</a>
+        </div>
+        <div className="flex-1 flex flex-row items-center justify-center gap-[2px]">
+          <span className="text-[14px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)]">© 2025 All rights reserved</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default FooterContent;

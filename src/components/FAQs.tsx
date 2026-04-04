@@ -1,66 +1,74 @@
 "use client";
 
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
-interface FAQsProps {
-  className?: string;
+interface FaqItem {
+  question: string;
+  answer: string;
 }
 
-const faqs = [
+const faqData: FaqItem[] = [
   {
-    question: "What types of projects do you take on?",
-    answer:
-      "I work on a range of visual and digital projects including brand identity, web design, editorial photography, and creative direction. I'm drawn to work with lifestyle, fashion, and culture-focused clients, though I'm always open to interesting briefs from any industry.",
+    question: "What services do you offer?",
+    answer: "I offer visual identity design, web design, photography (lifestyle, editorial, product, and brand), and graphic design including social media assets, lookbooks, packaging, and posters.",
   },
   {
-    question: "How do we get started?",
-    answer:
-      "Simply reach out via the contact page or send an email to hello@maelle.design. I'll get back to you within a couple of days to schedule a discovery call where we can discuss your project, timeline, and budget.",
+    question: "What is your typical process?",
+    answer: "My process typically starts with a discovery call to understand your vision, followed by research and concept development, design iterations with your feedback, and final delivery with all necessary assets and guidelines.",
   },
   {
-    question: "What's your typical turnaround time?",
-    answer:
-      "Timelines vary depending on the scope. A brand identity project typically takes 4–8 weeks, while a photography shoot can be planned and delivered within 1–2 weeks. Web design projects usually run 6–10 weeks from kickoff to launch.",
+    question: "How long does a project take?",
+    answer: "Timelines vary based on scope. A brand identity typically takes 4–6 weeks, web design 3–5 weeks, and photography shoots 1–2 weeks including post-production. I'll provide a detailed timeline after our initial consultation.",
+  },
+  {
+    question: "What are your rates?",
+    answer: "Rates depend on the project scope and deliverables. I offer both project-based pricing and day rates for photography. Please get in touch for a custom quote tailored to your needs.",
   },
   {
     question: "Do you work with international clients?",
-    answer:
-      "Yes, I work with clients globally. Most of my process is remote-friendly, with clear communication, regular check-ins, and digital delivery. For photography projects, travel arrangements can be discussed on a case-by-case basis.",
-  },
-  {
-    question: "Do you offer revisions?",
-    answer:
-      "Yes. Each project includes a defined number of revision rounds (outlined in the project proposal). I work collaboratively throughout the process to ensure the final result aligns with your vision before we reach the revision stage.",
+    answer: "Yes! While I'm based in France, I work with clients worldwide. Most of my communication happens over video calls and email, and I can travel for photography shoots when needed.",
   },
 ];
 
-export function FAQs({ className }: FAQsProps) {
-  const [open, setOpen] = useState<number | null>(null);
+export function FAQs() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className={cn("w-full flex flex-col gap-[6px]", className)}>
-      {faqs.map((faq, i) => (
-        <div key={i} className="w-full overflow-visible">
+    <div className="w-full flex flex-col gap-[6px]">
+      {faqData.map((item, i) => (
+        <div key={i} className="w-full">
           <button
-            onClick={() => setOpen(open === i ? null : i)}
-            className="w-full flex flex-row items-start justify-between gap-[16px] py-[12px] text-left"
+            onClick={() => setOpenIndex(openIndex === i ? null : i)}
+            className="w-full flex flex-row items-center justify-between py-[12px] text-left"
           >
-            <span className="text-[16px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
-              {faq.question}
+            <span className="text-[16px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
+              {item.question}
             </span>
-            <span className="text-[16px] text-[var(--framer-gray)] flex-shrink-0 mt-[2px]">
-              {open === i ? "−" : "+"}
-            </span>
+            <motion.span
+              animate={{ rotate: openIndex === i ? 45 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="text-[18px] font-medium text-[var(--framer-black)] ml-[16px] flex-shrink-0"
+            >
+              +
+            </motion.span>
           </button>
-          {open === i && (
-            <div className="pb-[12px] pr-[32px]">
-              <p className="text-[16px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-gray)] font-[family-name:var(--font-geist)]">
-                {faq.answer}
-              </p>
-            </div>
-          )}
-          <div className="w-full h-[1px] bg-[var(--framer-light-gray)]" />
+          <AnimatePresence>
+            {openIndex === i && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0, 0, 0.2, 1] }}
+                className="overflow-hidden"
+              >
+                <p className="pb-[16px] text-[14px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)] font-[family-name:var(--font-geist)] max-w-[520px]">
+                  {item.answer}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <div className="h-[1px] bg-[var(--framer-light-gray)]" />
         </div>
       ))}
     </div>

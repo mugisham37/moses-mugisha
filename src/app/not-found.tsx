@@ -1,34 +1,15 @@
-import Link from "next/link"
+import { Navigation } from "@/components/Navigation";
+import Link from "next/link";
 
-export default function NotFound() {
-  return (
-    <div className="w-full max-w-[1200px] mx-auto">
-      <div className="flex flex-col lg:flex-row gap-[32px] px-[20px]">
-        {/* LEFT SIDEBAR — empty */}
-        <aside className="lg:w-1/4 hidden lg:block" aria-hidden="true" />
-
-        {/* MIDDLE */}
-        <div className="flex-1 border-x border-[var(--framer-light-gray)] flex flex-col items-start justify-center min-h-[80vh] px-[16px] py-[140px] gap-[24px]">
-          <p className="text-[14px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-gray)] font-[family-name:var(--font-geist)]">
-            404
-          </p>
-          <h1 className="text-[56px] leading-[1em] tracking-[-0.05em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
-            Page not found.
-          </h1>
-          <p className="max-w-[520px] text-[16px] leading-[1.4em] tracking-[-0.03em] font-[500] text-[var(--framer-black)] font-[family-name:var(--font-geist)]">
-            The page you&apos;re looking for doesn&apos;t exist or has been moved.
-          </p>
-          <Link
-            href="/"
-            className="text-[14px] leading-[1em] tracking-[-0.03em] font-semibold font-[family-name:var(--font-inter-var)] text-[var(--framer-black)] hover:opacity-70 transition-opacity"
-          >
-            ← Back to home
-          </Link>
-        </div>
-
-        {/* RIGHT SIDEBAR — empty */}
-        <aside className="lg:w-1/4 hidden lg:block" aria-hidden="true" />
+export default function NotFoundPage() {
+  return (<>
+    <Navigation />
+    <div className="w-full min-h-screen bg-[var(--framer-white)] flex items-center justify-center px-[16px]">
+      <div className="flex flex-col items-center gap-[24px]">
+        <h1 className="text-[48px] md:text-[56px] font-medium leading-[1em] tracking-[-0.05em] text-[var(--framer-black)]">404</h1>
+        <p className="text-[14px] md:text-[16px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)]">Page not found</p>
+        <Link href="/" className="text-[14px] font-semibold text-[var(--framer-black)] underline decoration-[var(--framer-light-gray)] underline-offset-[3px] hover:text-[var(--framer-gray)] transition-colors">Go back home</Link>
       </div>
     </div>
-  )
+  </>);
 }

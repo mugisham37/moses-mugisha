@@ -1,48 +1,29 @@
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 interface PrimaryButtonProps {
   text: string;
   href: string;
   size?: "16" | "14";
-  className?: string;
 }
 
-export function PrimaryButton({
-  text,
-  href,
-  size = "16",
-  className,
-}: PrimaryButtonProps) {
-  const textClass =
-    size === "14"
-      ? "text-[14px] leading-[1em] tracking-[-0.03em] font-semibold font-[family-name:var(--font-inter-var)] text-[var(--framer-black)]"
-      : "text-[16px] leading-[1em] tracking-[-0.03em] font-semibold font-[family-name:var(--font-inter-var)] text-[var(--framer-black)]";
+export function PrimaryButton({ text, href, size = "16" }: PrimaryButtonProps) {
+  const isExternal = href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
+  const fontSize = size === "16" ? "text-[16px]" : "text-[14px]";
 
-  const containerClass = cn(
-    "inline-flex items-start gap-[6px] overflow-visible",
-    className
-  );
+  const className = `${fontSize} font-semibold leading-[1em] tracking-[-0.03em] font-[family-name:var(--font-inter)] text-[var(--framer-black)] hover:text-[var(--framer-gray)] transition-colors py-[2px] underline decoration-[var(--framer-light-gray)] underline-offset-[3px]`;
 
-  const isInternal = href.startsWith("/");
-
-  if (isInternal) {
+  if (isExternal) {
     return (
-      <Link href={href} className={containerClass}>
-        <span className={textClass}>{text}</span>
-      </Link>
+      <a href={href} className={className}>
+        {text}
+      </a>
     );
   }
 
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={containerClass}
-    >
-      <span className={textClass}>{text}</span>
-    </a>
+    <Link href={href} className={className}>
+      {text}
+    </Link>
   );
 }
 
