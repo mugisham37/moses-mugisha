@@ -45,7 +45,7 @@ export function Navigation() {
       <div className="max-w-[1200px] mx-auto">
         {/* Desktop */}
         <div className="hidden md:flex flex-row items-center gap-[32px] px-[20px] py-[12px]">
-          <div className="w-1/4 flex items-center"><Link href="/"><img src="https://framerusercontent.com/images/1Ic0yQoRORDscRbsbAdM78xcalM.svg" alt="Logo" className="h-[20px] w-auto dark:invert" /></Link></div>
+          <div className="w-1/4 flex items-center"><Link href="/"><span className="text-[20px] font-medium leading-[1em] tracking-[-0.05em] text-[var(--framer-black)]">Moses</span></Link></div>
           <div className="flex-1 flex flex-row items-center gap-[4px] pl-[16px]">
             {links.map((l, i) => <Link key={l.href} href={l.href} className="text-[14px] font-semibold leading-[1em] tracking-[-0.03em] text-[var(--framer-black)] hover:text-[var(--framer-gray)] transition-colors">{l.label}{i < 3 ? "," : ""}</Link>)}
           </div>
@@ -57,7 +57,7 @@ export function Navigation() {
         </div>
         {/* Mobile */}
         <div className="flex md:hidden flex-row items-center justify-between px-[16px] py-[12px]">
-          <Link href="/"><img src="https://framerusercontent.com/images/1Ic0yQoRORDscRbsbAdM78xcalM.svg" alt="Logo" className="h-[18px] w-auto dark:invert" /></Link>
+          <Link href="/"><span className="text-[18px] font-medium leading-[1em] tracking-[-0.05em] text-[var(--framer-black)]">Moses</span></Link>
           <div className="flex items-center gap-[12px]">
             <ThemeToggle />
             <button onClick={() => setMenuOpen(!menuOpen)} className="flex flex-col items-center justify-center w-[32px] h-[32px] gap-[5px]" aria-label="Menu">

@@ -11,23 +11,23 @@ interface FaqItem {
 const faqData: FaqItem[] = [
   {
     question: "What services do you offer?",
-    answer: "I offer visual identity design, web design, photography (lifestyle, editorial, product, and brand), and graphic design including social media assets, lookbooks, packaging, and posters.",
+    answer: "I offer full-stack software engineering (web applications, APIs, DevOps, AI/ML systems), web design, motion graphics and animation, VFX compositing and color grading, and 3D design and rendering. Whether you need a scalable platform built from scratch or a cinematic motion piece, I can help.",
   },
   {
     question: "What is your typical process?",
-    answer: "My process typically starts with a discovery call to understand your vision, followed by research and concept development, design iterations with your feedback, and final delivery with all necessary assets and guidelines.",
+    answer: "I start with a discovery call to understand your goals, then move into research, planning, and iterative delivery — with regular check-ins throughout. For engineering projects this includes architecture review and milestone demos. For creative projects it includes concept boards and preview renders before final delivery.",
   },
   {
     question: "How long does a project take?",
-    answer: "Timelines vary based on scope. A brand identity typically takes 4–6 weeks, web design 3–5 weeks, and photography shoots 1–2 weeks including post-production. I'll provide a detailed timeline after our initial consultation.",
+    answer: "Timelines vary by scope. A full-stack web application typically takes 6–12 weeks, a web design project 3–5 weeks, and motion graphics or 3D renders 2–4 weeks. I provide a detailed timeline after our initial consultation so you know exactly what to expect.",
   },
   {
     question: "What are your rates?",
-    answer: "Rates depend on the project scope and deliverables. I offer both project-based pricing and day rates for photography. Please get in touch for a custom quote tailored to your needs.",
+    answer: "Rates depend on project scope, complexity, and deliverables. I offer both fixed project pricing and hourly rates depending on the engagement. Feel free to reach out with your project details for a custom quote tailored to your specific needs.",
   },
   {
     question: "Do you work with international clients?",
-    answer: "Yes! While I'm based in France, I work with clients worldwide. Most of my communication happens over video calls and email, and I can travel for photography shoots when needed.",
+    answer: "Yes! While I'm based in Kigali, Rwanda, I work with clients worldwide. Communication happens over video calls and email, and I adapt to different time zones to keep collaboration smooth and efficient.",
   },
 ];
 

@@ -3,8 +3,8 @@ import { Providers } from "@/components/providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Maelle — Digital Designer & Photographer",
-  description: "A digital designer & photographer with 12 years of experience.",
+  title: "Moses Mugisha — Software Engineer & Creative Technologist",
+  description: "Full-stack software engineer, web designer, motion graphics artist, VFX artist, and 3D designer based in Kigali, Rwanda.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

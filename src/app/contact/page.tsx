@@ -15,11 +15,11 @@ function ContactForm() {
   return (<>
     <div className="flex flex-col gap-[16px] pb-[24px] lg:pb-[40px]">
       <h1 className="text-[36px] md:text-[44px] lg:text-[56px] font-medium leading-[1em] tracking-[-0.05em] text-[var(--framer-black)]">Reach out.</h1>
-      <p className="text-[14px] md:text-[16px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)] max-w-[520px]">I&apos;d love to hear from you. Whether you&apos;re looking to collaborate on a new project, discuss a commission, or simply say hello</p>
+      <p className="text-[14px] md:text-[16px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)] max-w-[520px]">I&apos;d love to hear from you. Whether you&apos;re looking to collaborate on a software project, creative production, or simply want to say hello.</p>
     </div>
     <div className="flex flex-col md:flex-row items-start md:items-end gap-[16px] md:gap-[8px] mb-[32px]">
-      <div className="flex-1 flex flex-col gap-[4px]"><PrimaryButton text="hello@maelle.design" href="mailto:hello@maelle.design" /><PrimaryButton text="(123) 456-7890" href="tel:+1234567890" size="14" /></div>
-      <div className="flex flex-row items-end gap-[8px]"><Icon variant="Social button / X" href="x.com" /><Icon variant="Social button / instagram" href="instagram.com" /><Icon variant="Social button / dribbble" href="https://dribbble.com/" /></div>
+      <div className="flex-1 flex flex-col gap-[4px]"><PrimaryButton text="mugisham505@gmail.com" href="mailto:mugisham505@gmail.com" /><PrimaryButton text="+250 786 768 418" href="tel:+250786768418" size="14" /></div>
+      <div className="flex flex-row items-end gap-[8px]"><Icon variant="Social button / X" href="https://x.com/mugisham37" /><Icon variant="Social button / instagram" href="https://instagram.com/mugisham37" /><Icon variant="Social button / dribbble" href="https://github.com/mugisham37" /></div>
     </div>
     <div className="flex flex-col gap-[32px] pt-[32px] pb-[20px]">
       <div className="h-[1px] bg-[var(--framer-light-gray)]" />

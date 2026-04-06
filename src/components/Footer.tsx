@@ -30,14 +30,8 @@ export function FooterContent() {
       <div className="h-[20vh] opacity-0" />
       <LetsTalkTicker />
       <div className="h-[20vh] opacity-0" />
-      <div className="flex flex-col md:flex-row items-center justify-center gap-[8px] px-[16px] pb-[8px]">
-        <div className="flex-1 flex flex-row items-center gap-[2px]">
-          <span className="text-[14px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)]">Created by</span>
-          <a href="https://thaer.shop" target="_blank" rel="noopener noreferrer" className="text-[14px] font-medium leading-[1em] tracking-[-0.03em] text-[var(--framer-black)] underline decoration-[var(--framer-light-gray)] underline-offset-[3px] hover:text-[var(--framer-gray)] transition-colors ml-[4px]">Thaer</a>
-        </div>
-        <div className="flex-1 flex flex-row items-center justify-center gap-[2px]">
-          <span className="text-[14px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)]">© 2025 All rights reserved</span>
-        </div>
+      <div className="flex flex-row items-center justify-center px-[16px] pb-[8px]">
+        <span className="text-[14px] font-medium leading-[1.4em] tracking-[-0.03em] text-[var(--framer-black)]">© 2025 Mugisha Moses. All rights reserved.</span>
       </div>
     </div>
   );
